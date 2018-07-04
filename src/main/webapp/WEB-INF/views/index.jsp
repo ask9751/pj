@@ -13,7 +13,20 @@
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="/resources/bootstrap-3.3.2/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
-
+<style>
+.movimg {
+	margin-bottom : 5px;
+}
+.wrap_desc{
+	left:0;
+	top:0;
+	z-index:1000;
+	width:50%;
+	height:290px;
+	padding-top:24px;
+	opacity:1;
+}
+</style>
 
 <!-- Carousel -->
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -130,40 +143,42 @@
 </div>
 
 
+
 <div class="row">
 
-	
 	<div class="col-sm-12">
+
 		<div class="col-sm-12">
 			<h1 style="color: black;">주간 인기영화 </h1>
 		</div>
 	</div>
 									
-	<div class="col-sm-12">	
-
+	<div class="col-sm-12 dec">	
 		<c:forEach items="${week}" var="week" begin="0" end="5">
 			<div class="col-sm-2">
-				<div class="info"><a href="https://${week.infoLink}"><img src="https://${week.img}"></a></div>
+				<div class="info"><a href="https://${week.infoLink}"><img class="movimg" style="width: 90%;" src="https://${week.img}"></a></div>
+				<span style="display:none;"class="wrap_desc">${week.des}</span>
 				<div>${week.tit }</div>
 				<div>평점 : ${week.grade }</div>
-				<div>${week.open }</div>
+				<div>${week.open }</div>				
 			</div>		
 		</c:forEach>
 	</div>
 		
 	<div class="col-sm-12">
 		<div class="col-sm-12">
+
 			<h1 style="color: black;">월간 인기영화 </h1>
 		</div>
 	</div>	
 		
 	<div class="col-sm-12">
 		<c:forEach items="${month}" var="month" begin="0" end="5">
-				<div class="col-sm-2">
-					<div class="info"><a href="https://${month.infoLink}"><img src="https://${month.img}"></a></div>
+				<div class="col-sm-2 dec">
+					<div class="info"><a href="https://${month.infoLink}"><img class="movimg" style="width: 90%;" src="https://${month.img}"></a></div>
 					<div>${month.tit }</div>
 					<div>평점 : ${month.grade }</div>
-					<div>${month.open }</div>
+					<div>${month.open }</div>					
 				</div>		
 		</c:forEach>
 	</div>
@@ -172,11 +187,12 @@
 		<div class="col-sm-12">
 			<h1 style="color: black;">연간 인기영화 </h1>
 		</div>
-	</div>	
+	</div>
+		
 	<div class="col-sm-12">
 		<c:forEach items="${year}" var="year" begin="0" end="5">
 				<div class="col-sm-2">
-					<div class="info"><a href="https://${year.infoLink}"><img src="https://${year.img}"></a></div>
+					<div class="info"><a href="https://${year.infoLink}"><img class="movimg" style="width: 90%;" src="https://${year.img}"></a></div>
 					<div>${year.tit }</div>
 					<div>평점 : ${year.grade }</div>
 					<div>${year.open }</div>
@@ -187,18 +203,45 @@
 <script>	
 $(document).ready(function(){
 
-	console.log('${prin}');
-	
+	/* $('.info').on("click",function(e){
+
+	var info = $('info');
+>>>>>>> a1c150011f9b3772a56522aa51250a29e961fd98
 	$('.info').on("click",function(e){
 		e.preventDefault();
 		var infosrc = $(e.target)[0].parentElement.href;
 		console.log(infosrc);		
-	});	
+	}); */
+	
+	/* $(".movimg").mouseenter(function(e){
+		e.stopPropagation();
+		var img = $(e.target);
+		
+		if(img.attr('class') == 'movimg') {
+			img.css('display','none');
+			img.closest('div').siblings('.wrap_desc').css("display","block");
+			}; 
+	});
+		
+	$(".movimg").mouseleave(function(e){
+		e.stopPropagation();
+		var target = $(e.target);
+		if(target.closest('span').attr('class') == 'wrap_desc') {
+			
+			var img = target.closest('div').find('img');
+			console.log(img[0]);
+			img.css("display","block");
+			target.closest('span').css("display","none");		
+		};	
+	}); */
 	
 	(function() {
 		var name = '${prin}';
 		if(name != "") {
+<<<<<<< HEAD
 			console.log($("#myModal"));
+=======
+>>>>>>> a1c150011f9b3772a56522aa51250a29e961fd98
 			$("#myModal").modal();
 		}
 	})();

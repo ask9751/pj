@@ -23,6 +23,7 @@ public class BoardTests {
 	public void testList() {
 		BoardVO vo = new BoardVO();
 		
+
 		for(int i =0; i<20 ; i++) {
 			vo.setContent("Test........" + i);
 			vo.setContent("Test Content............" + i);
@@ -33,6 +34,7 @@ public class BoardTests {
 			
 			mapper.insert(vo);
 		}
+
 
 	}
 	

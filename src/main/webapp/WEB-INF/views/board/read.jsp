@@ -421,6 +421,7 @@ $(".upload").on("click","div span img",function(e) {
 	 (function fileList() {
 	var fileList = $(".upload").children()[1].childElementCount;
 	var str;
+
 	if(fileList == 0){
 	  	   str = "<div style='font-size:15px; text-align:center'>첨부된 파일이 없습니다.</div>";
 	  	   $(".upload").append(str);

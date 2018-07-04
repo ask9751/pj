@@ -34,6 +34,7 @@
 	<!-- fileUpload Pahth -->
 	<beans:bean id="uploadPath" class="java.lang.String">
 		<beans:constructor-arg value="c:\\zzz\\upload">
+
 <!-- 		<beans:constructor-arg
 			value="/Users/whwp0913/Desktop/files"> -->
 		</beans:constructor-arg>
@@ -41,7 +42,9 @@
 
 	<beans:bean id="photoUploadPath" class="java.lang.String">
 		<beans:constructor-arg value="c:\\zzz\\photoUpload">
+
 <!-- 		<beans:constructor-arg
+
 			value="/Users/whwp0913/Desktop/files/img"> -->
 		</beans:constructor-arg>
 	</beans:bean>

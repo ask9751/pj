@@ -14,5 +14,6 @@ public class MovieVO {
 	private String open;
 	private Date regdate;
 	private String infoLink;
+	private String des;
 	
 }

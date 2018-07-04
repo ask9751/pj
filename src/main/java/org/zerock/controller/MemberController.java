@@ -96,6 +96,7 @@ public class MemberController {
 		PrintWriter out = res.getWriter();
 
 		out.println("<script>alert('회원가입되었습니다'); location.href='/login' </script>");
+
 		
 	}
 

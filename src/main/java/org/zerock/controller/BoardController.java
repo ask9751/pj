@@ -51,9 +51,10 @@ public class BoardController {
 	public void read(Model model, @Param("bno") int bno, Criteria cri,Principal prin) {	
 		BoardVO vo = service.read(bno);
 		vo.setFiles(service.searchFile(bno));
-		
+
 		if(prin != null) {
 			model.addAttribute("prin", prin.getName());
+
 		}
 		model.addAttribute("countList", replyService.count(bno));
 		model.addAttribute("BoardVO", vo);
