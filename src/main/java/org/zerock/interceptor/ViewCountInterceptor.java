@@ -16,7 +16,7 @@ import com.mysql.jdbc.StringUtils;
 import lombok.Setter;
 
 
-public class BoardInterceptor extends HandlerInterceptorAdapter {
+public class ViewCountInterceptor extends HandlerInterceptorAdapter {
 	
 	@Setter(onMethod_= {@Autowired})
 	private BoardService service;

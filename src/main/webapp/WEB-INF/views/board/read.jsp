@@ -383,7 +383,9 @@ $(".upload").on("click","div span img",function(e) {
 	      }
 	      }
 	    });
-	   }else{
+	   }
+	   if(replyMid != user){
+		console.log("사용자 불일치!");
 	   	alert("댓글 작성자만 삭제 가능합니다.");
 	   	return;
 	   };

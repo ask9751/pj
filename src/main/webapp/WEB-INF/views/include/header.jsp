@@ -27,6 +27,8 @@
 <!-- Photo Board -->
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
 <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
@@ -56,12 +58,12 @@ background-color:#eee;
 }
 
 @font-face {
-	font-family: 'NanumGothic';
+	font-family: 'InterparkGothicBold';
 	src: url("/resources/InterparkGothicBold.ttf") format('truetype');
 
 }
 body{
-	font-family: NanumGothic;
+	font-family: InterparkGothicBold;
 }
 
 </style>

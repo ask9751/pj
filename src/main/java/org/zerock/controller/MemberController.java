@@ -31,21 +31,31 @@ public class MemberController {
 
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public ModelAndView login(@RequestParam(value="error", required=false)String error,
-					@RequestParam(value="logout", required = false)String logout, HttpServletRequest request) {
+					@RequestParam(value="logout", required = false)String logout, HttpServletRequest request
+					,HttpSession session) {
 		
 		ModelAndView model = new ModelAndView();
+		
+		String currentUrl = request.getRequestURL().toString();
+		
+		System.out.println(currentUrl);
 			
 		String referrer = request.getHeader("Referer");
 		
-		System.out.println("로그인 컨트롤러 이전 페이지.........................................." + referrer);
+//		System.out.println("로그인 컨트롤러 이전 페이지.........................................." + referrer);
 		
 		if(referrer == null) {
 			referrer = "http://localhost:8080/index";
 		}
 
-		if(!referrer.equals("http://localhost:8080/signup")) { //이전페이지가 회원가입 페이지가 아닐 경우에만 prevPage에 주소를 담아준다
+		if(!referrer.equals("http://localhost:8080/signup") && error == null) { 
+			//이전페이지가 회원가입 페이지가 아니고 에러가 없을 경우에만 prevPage에 주소를 담아준다
+			
 			request.getSession().setAttribute("prevPage", referrer);
+			System.out.println("referrer..........................." + referrer);
 		}
+
+		
 		if (error != null) {
 			model.addObject("error", "Invalid username and password!");
 		}
@@ -53,6 +63,7 @@ public class MemberController {
 		if (logout != null) {
 			model.addObject("msg", "You've been logged out successfully.");
 		}
+		
 
 		model.setViewName("login");
 		return model;
@@ -63,7 +74,7 @@ public class MemberController {
 
 		String referrer = request.getHeader("Referer");
 		request.getSession().setAttribute("prevPage", referrer);
-		System.out.println("회원가입 페이지 이전페이지 저장 URL................................" + referrer);
+//		System.out.println("회원가입 페이지 이전페이지 저장 URL................................" + referrer);
 	}
 
 	@PostMapping("/signup")

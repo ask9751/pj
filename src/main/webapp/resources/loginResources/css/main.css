@@ -6,8 +6,15 @@
 [ FONT ]*/
 
 @font-face {
-  font-family: OpenSans-Regular;
-  src: url('../fonts/OpenSans/OpenSans-Regular.ttf'); 
+  font-family: OpenSans-Regular, 'InterparkGothicBold';
+  src: url('../fonts/OpenSans/OpenSans-Regular.ttf');
+  src: url("/resources/InterparkGothicBold.ttf") format('truetype'); 
+}
+
+label{
+	font-size: 14px;
+	font-family: 'InterparkGothicBold';
+	
 }
 
 
@@ -26,9 +33,17 @@ body, html {
 	font-family: OpenSans-Regular, sans-serif;
 }
 
+
+@font-face {
+	font-family: 'InterparkGothicBold';
+	src: url("/resources/InterparkGothicBold.ttf") format('truetype');
+
+}
+
 /*---------------------------------------------*/
 a {
-	font-family: OpenSans-Regular;
+	/* font-family: OpenSans-Regular; */
+	font-family: 'InterparkGothicBold';
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
@@ -190,6 +205,14 @@ iframe {
   border: 1px solid #e6e6e6;
 }
 
+.wrap-input50 {
+  width: 60%;
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #e6e6e6;
+}
+
+
 .wrap-input100.rs1 {
   border-top: none;
 }
@@ -204,10 +227,22 @@ iframe {
   line-height: 1.2;
 }
 
+.input50 {
+  width: 100%;
+  background: transparent;
+  font-family: OpenSans-Regular;
+  font-size: 15px;
+  color: #666666;
+  line-height: 1.2;
+}
 
 /*---------------------------------------------*/
 input.input100 {
   height: 68px;
+  padding: 0 25px 0 25px;
+}
+input.input50 {
+  height: 58px;
   padding: 0 25px 0 25px;
 }
 
@@ -332,8 +367,8 @@ input.input100 {
   height: 60px;
   background-color: #4272d7;
 
-  font-family: OpenSans-Regular;
-  font-size: 14px;
+  font-family: 'InterparkGothicBold';
+  font-size: 17px;
   color: #fff;
   line-height: 1.2;
   text-transform: uppercase;

@@ -6,7 +6,7 @@
 <link href="/resources/carousel.css" rel="stylesheet">
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!-- <script src="/resources/bootstrap-3.3.2/dist/js/bootstrap.min.js"></script> -->
+<script src="/resources/bootstrap-3.3.2/dist/js/bootstrap.min.js"></script>
 
 <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 <script src="/resources/bootstrap-3.3.2/docs/assets/js/vendor/holder.js"></script>
@@ -113,7 +113,14 @@
         </div>
         
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        	<div class="col-sm-12">
+        	  <label class="btn btn-primary active pull-left">
+        	    <input type="checkbox" value="notToday" name="notToday">
+        	    <span class="cr"></span>오늘 하루 이 창을 열지 않습니다
+        	  </label>
+        	  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        	</div>
+        	
         </div>
       </div>
       
@@ -180,6 +187,8 @@
 <script>	
 $(document).ready(function(){
 
+	console.log('${prin}');
+	
 	$('.info').on("click",function(e){
 		e.preventDefault();
 		var infosrc = $(e.target)[0].parentElement.href;
@@ -189,9 +198,10 @@ $(document).ready(function(){
 	(function() {
 		var name = '${prin}';
 		if(name != "") {
-		$("#myModal").modal();
+			console.log($("#myModal"));
+			$("#myModal").modal();
 		}
-	})();    
+	})();
 });
 </script>	
     <!-- Wrap the rest of the page in another container to center all the content. -->

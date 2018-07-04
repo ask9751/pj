@@ -37,45 +37,42 @@
 				<form class="login100-form validate-form" method="post">
 					<span class="login100-form-title p-b-33"> Create Acount </span>
 
-					<div class="wrap-input100 validate-input"
+					<div style="float: left; margin-right: 7px" class="wrap-input50 validate-input"
 						data-validate="아이디를 입력해주세요" data-checkId="이미 존재하는 ID입니다.">
-						<input class="input100 inputId" type="text" name="mid"
+						<input class="input50 inputId" type="text" name="mid"
 							placeholder="ID">
-						<button class="btn btn-info idCheck">아이디 중복확인</button>
-						<span class="focus-input100-1"></span> <span
-							class="focus-input100-2"></span>
 					</div>
-
-					<div class="wrap-input100 rs1 validate-input"
+						<button style="width: 38%; float: left;" class="login100-form-btn idCheck">중복확인</button>
+					
+					<div class="wrap-input100 validate-input m-t-80"
 						data-validate="사용하실 비밀번호를 입력해주세요">
 						<input id="mpw1" class="input100 mpw" type="password" name="mpw"
 							placeholder="Password"> <span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
 
-					<div class="wrap-input100 rs1 validate-input"
+					<div class="wrap-input100 validate-input m-t-10"
 						data-validate="비밀번호 확인을 위해 입력해주세요">
 						<input id="mpw2" class="input100 mpw2" type="password" name="mpw2"
 							placeholder="Password"> <span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input"
+					<div class="wrap-input100 validate-input m-t-10"
 						data-validate="이름을 입력해주세요">
 						<input class="input100" type="text" name="mname"
 							placeholder="Name"> <span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input"
+					<div class="wrap-input100 validate-input m-t-10"
 						data-validate="이메일을 ex@abc.xyz 방식으로 입력해주세요">
 						<input class="input100" type="text" name="email"
 							placeholder="E-Mail"> <span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
 
-					<div class="input100">
-					<div class="validate-input">
+					<div class="m-t-10">
 						<select class="form-control" name="favor">
 						<option value="없음">가장 좋아하는 장르를 선택해주세요.</option>
 						<option value="코미디">코미디</option>
@@ -84,18 +81,17 @@
 						<option value="SF">SF</option>
 						<option value="다큐멘터리">다큐멘터리</option> 			
 						</select>
-					</div>
-						 <span class="focus-input100-1"></span>
+						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
 
 					<div class="container-login100-form-btn m-t-20">
-						<button class="login100-form-btn signUP">Sign Up</button>
+						<button class="login100-form-btn signUP">회원 가입</button>
 					</div>
 
 					<div class="text-center">
-						<span class="txt1">Do yo want Sign In?</span> <a href="login"
-							class="txt2 hov1">Sign In</a>
+						<span class="txt1">로그인 하시려면</span> <a href="login"
+							class="txt2 hov1">여기를 클릭</a>
 					</div>
 					
 					<input type="hidden" name="${_csrf.parameterName}"

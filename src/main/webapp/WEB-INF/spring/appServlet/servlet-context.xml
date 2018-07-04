@@ -47,6 +47,20 @@
 	</beans:bean>
 	<context:component-scan
 		base-package="org.zerock.controller" />
+		
+		
+		<beans:bean id="ViewsCountInterceptor" class="org.zerock.interceptor.ViewCountInterceptor">
+		</beans:bean>
+		
+		<interceptors>
+		
+			<interceptor>
+				<mapping path="/board/read"/>
+			    <beans:ref bean="ViewsCountInterceptor"/>
+			
+			</interceptor>
+		
+		</interceptors>
 
 
 
@@ -55,7 +69,9 @@
 		</beans:bean> <beans:bean id="BoardInterceptor" class="org.zerock.interceptor.BoardInterceptor"></beans:bean> 
 		<beans:bean id="AuthInterceptor" class="org.zerock.interceptor.AuthInterceptor"></beans:bean> 
 		<beans:bean id="URIInterceptor" class="org.zerock.interceptor.URIInterceptor"></beans:bean> 
-		<interceptors> <interceptor> <mapping path="/index"/> <mapping path="/board/read"/> 
+		<interceptors>
+		 <interceptor> <mapping path="/index"/> 
+		 <mapping path="/board/read"/> 
 		<mapping path="/board/list"/> <mapping path="/photo/list"/> <mapping path="/photo/read"/> 
 		<beans:ref bean="URIInterceptor"/> </interceptor> <interceptor> <mapping 
 		path="/login"/> <beans:ref bean="LoginInterceptor"/> </interceptor> <interceptor> 
