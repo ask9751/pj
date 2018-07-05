@@ -14,7 +14,7 @@ th {
 	
 		<div class="col-sm-offset-2 col-sm-8" style="background-color: #e9faff;">
 			<div class="row">
-				<div class="col-sm-8">
+				<div class="col-sm-12">
 					<div class="text-center" style="border-bottom: 1px solid black; padding-top:10px;"><p sytle="font-size: 10px;">오늘의 HOT게시글</p></div>
 					<table class="table" style="padding-bottom : 0px;" >
 					<tr>
@@ -28,9 +28,6 @@ th {
 					</table>
 				</div>
 					
-				<div class="col-sm-4" style="margin-top: 15px; padding-left:0px;">
-						<img style="height: 185px; width: 265px;" src="http://www.xinhuanet.com/tw/2015-01/21/127406973_14218116279801n.jpg"/>
-				</div>
 			</div>									
 		</div>
 

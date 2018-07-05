@@ -11,4 +11,5 @@ public class RecommendVO {
 	private String director;
 	private String country; 
 	private String image;
+	
 }

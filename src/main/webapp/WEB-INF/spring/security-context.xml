@@ -29,7 +29,7 @@
 	/>
 	
 	<security:csrf disabled="true"/>
-	<security:remember-me key="pj01" token-validity-seconds="86400" data-source-ref="dataSource"/> 
+	<security:remember-me key="pj" token-validity-seconds="86400" data-source-ref="dataSource"/> 
 	</security:http>
 	
 	<security:authentication-manager>

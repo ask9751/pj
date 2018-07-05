@@ -33,27 +33,18 @@
 
 	<!-- fileUpload Pahth -->
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="c:\\zzz\\upload">
-
-<!-- 		<beans:constructor-arg
-			value="/Users/whwp0913/Desktop/files"> -->
+		<!-- <beans:constructor-arg value="c:\\zzz\\upload"> -->
+		<beans:constructor-arg value="/Users/whwp0913/Desktop/files">
 		</beans:constructor-arg>
 	</beans:bean>
 
 	<beans:bean id="photoUploadPath" class="java.lang.String">
-		<beans:constructor-arg value="c:\\zzz\\photoUpload">
-
-<!-- 		<beans:constructor-arg
-
-			value="/Users/whwp0913/Desktop/files/img"> -->
+		<!-- <beans:constructor-arg value="c:\\zzz\\photoUpload"> -->
+ 		<beans:constructor-arg value="/Users/whwp0913/Desktop/files/img">
 		</beans:constructor-arg>
 	</beans:bean>
 	<context:component-scan
 		base-package="org.zerock.controller" />
-
-
-
-
 	<!-- <beans:bean id="LoginInterceptor" class="org.zerock.interceptor.LoginInterceptor"> 
 		</beans:bean> <beans:bean id="BoardInterceptor" class="org.zerock.interceptor.BoardInterceptor"></beans:bean> 
 		<beans:bean id="AuthInterceptor" class="org.zerock.interceptor.AuthInterceptor"></beans:bean> 
@@ -67,5 +58,5 @@
 		<mapping path="/board/delete"/> <mapping path="/photo/write"/> <mapping path="/photo/modify"/> 
 		<mapping path="/photo/delete"/> <beans:ref bean="AuthInterceptor"/> </interceptor> 
 		</interceptors> -->
-
+		
 </beans:beans>

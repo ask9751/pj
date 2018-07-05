@@ -17,11 +17,10 @@ public class MailController {
   @Autowired
   private JavaMailSender mailSender;
  
- 
   // mailForm
   @GetMapping("/mailForm")
   public void mailForm() {
- 
+
   }  
  
   // mailSending 코드
@@ -44,11 +43,6 @@ public class MailController {
       messageHelper.setText(content);  // 메일 내용
      
       mailSender.send(message);
-      
-      System.out.println(setfrom);
-      System.out.println(tomail);
-      System.out.println(title);
-      System.out.println(content);
       
     } catch(Exception e){
       System.out.println(e);
