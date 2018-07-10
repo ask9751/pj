@@ -51,6 +51,7 @@
 					<p>
 						<a style="color: white" href="/signup">회원가입페이지 이동</a>
 					</p>
+\
 				</div>
 			</div>
 		</div>
@@ -238,10 +239,7 @@ $(document).ready(function(){
 	(function() {
 		var name = '${prin}';
 		if(name != "") {
-<<<<<<< HEAD
-			console.log($("#myModal"));
-=======
->>>>>>> a1c150011f9b3772a56522aa51250a29e961fd98
+
 			$("#myModal").modal();
 		}
 	})();
