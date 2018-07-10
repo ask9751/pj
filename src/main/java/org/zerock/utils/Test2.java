@@ -13,16 +13,16 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.zerock.domain.SearchResult;
 
-public class SearchAPI {
+import lombok.extern.log4j.Log4j;
 
-	public static List<SearchResult> searchMovie (String keyword) {
-		
-		List<SearchResult> list = new ArrayList<>();
-		
-		String clientId = "lymD0PHGjImLKtyrxgpv";//애플리케이션 클라이언트 아이디값";
+@Log4j
+public class Test2 {
+	
+    public static void main(String[] args) {
+        String clientId = "lymD0PHGjImLKtyrxgpv";//애플리케이션 클라이언트 아이디값";
         String clientSecret = "UTYB8hQAKN";//애플리케이션 클라이언트 시크릿값";
         try {
-            String text = URLEncoder.encode(keyword, "UTF-8");
+            String text = URLEncoder.encode("배트맨", "UTF-8");
             String apiURL = "https://openapi.naver.com/v1/search/movie?query="+ text; // json 결과
             //String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text; // xml 결과
             URL url = new URL(apiURL);
@@ -49,7 +49,7 @@ public class SearchAPI {
             JSONObject jsonObject = (JSONObject)jsonParser.parse(jsonStr);
             JSONArray array = (JSONArray)jsonObject.get("items");
             
-            
+            List<SearchResult> list = new ArrayList<>();
             
             for(int i=0; i< array.size(); i++) {
             	SearchResult result = new SearchResult();
@@ -70,13 +70,8 @@ public class SearchAPI {
             }
             System.out.println(list);
             
-            
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
-        return list;
-		
-	}
-	
+    }
 }

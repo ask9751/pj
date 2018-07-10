@@ -18,8 +18,9 @@ public class APIController {
 	}
 	
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
-	public String searchMoviePost(@Param("query") String keyword, Model model) {
+	public void searchMoviePost(@Param("query") String query, Model model) {
 
-		return null;
+		model.addAttribute("searchResult", SearchAPI.searchMovie(query));
+		System.out.println("search Post.......................");
 	}
 }
