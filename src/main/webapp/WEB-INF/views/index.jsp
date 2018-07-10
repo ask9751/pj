@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
+
 <link href="/resources/carousel.css" rel="stylesheet">
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -13,19 +14,29 @@
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="/resources/bootstrap-3.3.2/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
+
 <style>
 .movimg {
 	margin-bottom : 5px;
 }
-.wrap_desc{
+/* .wrap_desc{
 	left:0;
 	top:0;
-	z-index:1000;
 	width:50%;
 	height:290px;
 	padding-top:24px;
 	opacity:1;
+	height: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 8;
+    border: 1px solid black;
 }
+li {
+list-style: none;
+} */
 </style>
 
 <!-- Carousel -->
@@ -100,7 +111,7 @@
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog" style="margin:200px 360px;">    
       <!-- Modal content-->
-      <div class="modal-content" style="width:1000px;">
+      <div class="modal-content" style="width:700px;">
       
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -112,14 +123,16 @@
         
         <div class="modal-body">
           <div class="row">
-			<div class="col-sm-12 center-block">		
+			<div class="col-sm-12">		
  				<c:forEach items="${favor}" var="Recommend">
-				<div class="col-sm-4">
- 					<div class="recommend"><img src="${Recommend.image}"></div>
-					<div>${Recommend.title}</div>
-					<div>${Recommend.genre}</div>
-					<div>감독 : ${Recommend.director}</div>
-					<div>제작 국가 : ${Recommend.country}</div>
+				<div class="col-sm-4 text-center">
+ 					<div class="recommend"><img class="thumbnail"src="${Recommend.image}"></div>
+ 					
+						<div>${Recommend.title}</div>
+						<div>${Recommend.genre}</div>
+						<div>감독 : ${Recommend.director}</div>
+						<div>제작 국가 : ${Recommend.country}</div>
+					
 				</div>		
 				</c:forEach>	 	
 			</div>
@@ -145,52 +158,84 @@
 
 
 
-<div class="row">
 
-	<div class="col-sm-12">
-
-		<div class="col-sm-12">
+<div class="row imgbox">
+	<div class="col-sm-12">	
+		<div style="margin-bottom: 10px;"class="col-sm-12">
 			<h1 style="color: black;">주간 인기영화 </h1>
 		</div>
 	</div>
-									
-	<div class="col-sm-12 dec">	
+					
+	<div class="col-sm-12">	
 		<c:forEach items="${week}" var="week" begin="0" end="5">
 			<div class="col-sm-2">
-				<div class="info"><a href="https://${week.infoLink}"><img class="movimg" style="width: 90%;" src="https://${week.img}"></a></div>
-				<span style="display:none;"class="wrap_desc">${week.des}</span>
-				<div>${week.tit }</div>
-				<div>평점 : ${week.grade }</div>
-				<div>${week.open }</div>				
+				<div class="info" style="border:3px solid black;"><a href="https://${week.infoLink}"><img class="movimg" style="width: 100%;" src="https://${week.img}"></a>
+					<div>${week.tit }</div>									
+					<div>평점 : ${week.grade }</div>
+					<div>${week.open }</div>					
+				</div>				
 			</div>		
 		</c:forEach>
 	</div>
+	
+	<%-- <div class="col-sm-12">
+		<ul class="list_movie">	
+		<c:forEach items="${week}" var="week" begin="0" end="5">
+			<li class="col-sm-2">
+	
+				<div class="line text-center" style="height:275px;">
+					<span>
+						<a href="https://${week.infoLink}"><img class="movimg" style="width: 90%;" src="https://${week.img}"></a>
+					</span>
+					<div style="display:none;width:100%;height:100%"class="wrap_desc">${week.des}</div>
+				</div>
+				
+				<div>
+					<div>${week.tit }</div>
+					<span>평점 : ${week.grade }</span>
+					<span>${week.open }</span>
+				</div>				
+			</li>		
+		</c:forEach>
+		</ul>
+	</div> --%>
 		
 	<div class="col-sm-12">
-		<div class="col-sm-12">
-
+		<div style="margin-bottom: 10px;" class="col-sm-12">
 			<h1 style="color: black;">월간 인기영화 </h1>
 		</div>
 	</div>	
-		
-	<div class="col-sm-12">
+	
+	<%-- <div class="col-sm-12">
 		<c:forEach items="${month}" var="month" begin="0" end="5">
-				<div class="col-sm-2 dec">
+				<div class="col-sm-2">
 					<div class="info"><a href="https://${month.infoLink}"><img class="movimg" style="width: 90%;" src="https://${month.img}"></a></div>
 					<div>${month.tit }</div>
 					<div>평점 : ${month.grade }</div>
 					<div>${month.open }</div>					
 				</div>		
 		</c:forEach>
+	</div> --%>
+	
+	<div class="col-sm-12">	
+		<c:forEach items="${month}" var="month" begin="0" end="5">
+			<div class="col-sm-2">
+				<div class="info" style="border:3px solid black;"><a href="https://${month.infoLink}"><img class="movimg" style="width: 100%;" src="https://${month.img}"></a>
+					<div>${month.tit }</div>									
+					<div>평점 : ${month.grade }</div>
+					<div>${month.open }</div>					
+				</div>				
+			</div>		
+		</c:forEach>
 	</div>
 	
 	<div class="col-sm-12">
-		<div class="col-sm-12">
+		<div style="margin-bottom: 10px;" class="col-sm-12">
 			<h1 style="color: black;">연간 인기영화 </h1>
 		</div>
 	</div>
 		
-	<div class="col-sm-12">
+	<%-- <div class="col-sm-12">
 		<c:forEach items="${year}" var="year" begin="0" end="5">
 				<div class="col-sm-2">
 					<div class="info"><a href="https://${year.infoLink}"><img class="movimg" style="width: 90%;" src="https://${year.img}"></a></div>
@@ -199,41 +244,46 @@
 					<div>${year.open }</div>
 				</div>		
 		</c:forEach>
+	</div> --%>
+	
+	<div class="col-sm-12">	
+		<c:forEach items="${year}" var="year" begin="0" end="5">
+			<div class="col-sm-2">
+				<div class="info" style="border:3px solid black;"><a href="https://${year.infoLink}"><img class="movimg" style="width: 100%;" src="https://${year.img}"></a>
+					<div>${year.tit }</div>									
+					<div>평점 : ${year.grade }</div>
+					<div>${year.open }</div>					
+				</div>				
+			</div>		
+		</c:forEach>
 	</div>
 </div>
 <script>	
 $(document).ready(function(){
 
-	/* $('.info').on("click",function(e){
-
-	var info = $('info');
->>>>>>> a1c150011f9b3772a56522aa51250a29e961fd98
 	$('.info').on("click",function(e){
 		e.preventDefault();
 		var infosrc = $(e.target)[0].parentElement.href;
 		console.log(infosrc);		
 	}); */
 	
-	/* $(".movimg").mouseenter(function(e){
-		e.stopPropagation();
-		var img = $(e.target);
-		
-		if(img.attr('class') == 'movimg') {
-			img.css('display','none');
-			img.closest('div').siblings('.wrap_desc').css("display","block");
-			}; 
+	/* $(".line").mouseenter(function(e){
+		console.log('mouseenter is call! ', this);
+		var $target = $(this);
+		if ($target.find('img').is(':visible')) {
+			$img = $target.find('img');
+			//$img.fadeOut('fast');
+			$img.hide();
+			$target.find('.wrap_desc').fadeIn(100);
+		}
 	});
-		
-	$(".movimg").mouseleave(function(e){
-		e.stopPropagation();
-		var target = $(e.target);
-		if(target.closest('span').attr('class') == 'wrap_desc') {
-			
-			var img = target.closest('div').find('img');
-			console.log(img[0]);
-			img.css("display","block");
-			target.closest('span').css("display","none");		
-		};	
+	
+	$(".line").mouseleave(function(e){	
+		console.log('mouseleave is call! ', this);
+		var $target = $(this);
+		$target.find('.wrap_desc').hide();
+		console.log($target.find('img'));
+		$target.find('img').show();
 	}); */
 	
 	(function() {

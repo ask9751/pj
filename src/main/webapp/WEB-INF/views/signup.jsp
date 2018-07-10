@@ -42,9 +42,10 @@
 						<input class="input50 inputId" type="text" name="mid"
 							placeholder="ID">
 					</div>
+
 						<button style="width: 38%; float: left;" class="login100-form-btn idCheck">중복확인</button>
 					
-					<div class="wrap-input100 validate-input m-t-80"
+					<div class="wrap-input100 validate-input m-t-80">
 						data-validate="사용하실 비밀번호를 입력해주세요">
 						<input id="mpw1" class="input100 mpw" type="password" name="mpw"
 							placeholder="Password"> <span class="focus-input100-1"></span>
