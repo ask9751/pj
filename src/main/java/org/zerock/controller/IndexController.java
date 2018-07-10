@@ -23,6 +23,7 @@ public class IndexController {
 	public void index(Model model, Principal prin) throws IOException {
 		
 		if(prin != null) {
+			System.out.println("index 컨트롤러 / prin.............................................." + prin);
 		model.addAttribute("favor", mservice
 							.recommendMovie(mservice.getUserID(prin.getName()).getFavor()));
 		model.addAttribute("prin",prin.getName());

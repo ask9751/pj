@@ -139,7 +139,14 @@ list-style: none;
         </div>
         
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        	<div class="col-sm-12">
+        	  <label class="btn btn-primary active pull-left">
+        	    <input type="checkbox" value="notToday" name="notToday">
+        	    <span class="cr"></span>오늘 하루 이 창을 열지 않습니다
+        	  </label>
+        	  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        	</div>
+        	
         </div>
       </div>
       
@@ -150,8 +157,8 @@ list-style: none;
 
 
 
-<div class="row imgbox">
 
+<div class="row imgbox">
 	<div class="col-sm-12">	
 		<div style="margin-bottom: 10px;"class="col-sm-12">
 			<h1 style="color: black;">주간 인기영화 </h1>
@@ -197,7 +204,7 @@ list-style: none;
 			<h1 style="color: black;">월간 인기영화 </h1>
 		</div>
 	</div>	
-		
+	
 	<%-- <div class="col-sm-12">
 		<c:forEach items="${month}" var="month" begin="0" end="5">
 				<div class="col-sm-2">
@@ -252,9 +259,7 @@ list-style: none;
 </div>
 <script>	
 $(document).ready(function(){
-	/* $('.info').on("click",function(e){
 
-	var info = $('info');
 	$('.info').on("click",function(e){
 		e.preventDefault();
 		var infosrc = $(e.target)[0].parentElement.href;

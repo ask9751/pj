@@ -37,6 +37,8 @@ text-align: left;
 font-size: 14px;
 margin-top: 5px;
 }
+
+
 </style>
 <body>
 	<div class="limiter">
@@ -64,43 +66,39 @@ margin-top: 5px;
 						<span class="focus-input100-2"></span>
 					</div>
 					
+					<div>
+<!-- 						<span class="login100-form-title p-b-33 rememberMe">
+							<input type="checkbox" name="remember-me">&nbsp;Remember Me
+						</span> -->
+						<label class="p-t-15">
+						  <input class="m-r-3" name="remember-me" 
+						  style="top:5px; width: 17px; height: 17px; vertical-align: text-bottom;" 
+						  type="checkbox">
+						   로그인 유지
+						</label>
+						
+						<span class="pull-right p-t-10">
+							<a href="">아이디/비밀번호 찾기</a>&nbsp;|&nbsp;<a href="/signup">회원가입</a>
+						</span>
+					</div>
 					
-					<span class="login100-form-title p-b-33 rememberMe">
-						<input type="checkbox" name="remember-me">&nbsp;Remember Me
-					</span>
-
 					
 					<div class="container-login100-form-btn m-t-20">
-						<input value="Sign in" type="submit" id="sub" class="login100-form-btn"/>
+						<input value="로그인" type="submit" id="sub" class="login100-form-btn"/>
 							
 						
 					</div>
 					
-					<div class="text-center p-t-45 p-b-4">
-						<span class="txt1">
-							Forgot
-						</span>
-						<a href="#" class="txt2 hov1">
-							Username / Password?
-						</a>
+					<div class="container-login100-form-btn m-t-20">
+					
+					  <img src="/resources/icon/twitter.png">&nbsp;&nbsp;
+					  <img src="/resources/icon/facebook.png">&nbsp;&nbsp;
+					  <img src="/resources/icon/google.png">&nbsp;&nbsp;
+					  <img src="/resources/icon/kakao.jpg">&nbsp;&nbsp;
+					  <img src="/resources/icon/naver.png">
+					  
 					</div>
 
-					<div class="text-center">
-						<span class="txt1">
-							Create an account?
-						</span>
-						<a href="/signup" class="txt2 hov1 signup">
-							Sign up
-						</a>
-					</div>
-					<div class="text-center">
-						<span class="txt1">
-							이전 페이지로 가시려면?
-						</span>
-						<a href="/signup" class="txt2 hov1 signup">
-							여기를 클릭
-						</a>
-					</div>
 						<c:if test="${not empty error}">
 							<div class="error">${error}</div>
 						</c:if>
