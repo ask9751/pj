@@ -8,7 +8,9 @@
  
 <div class="main">
   <div class="col-sm-12 col-md-12" style="margin-top: 50px;">
-      
+    
+    
+    <!-- 위에는 영화 평점+리뷰 리스트가 나와야함 -->
     <div class="row">
       <div class="col-sm-offset-2 col-sm-8 text-right">
         <label>영화검색기</label>
@@ -22,7 +24,7 @@
    	  </div>
     </div>
     
-    <div class="row" style="margin-bottom:50px;">
+    <div class="row" style="margin-bottom:50px; display:none;">
       <div class="col-sm-offset-2 col-sm-8">
 		<span class="star-input">
 		  <span class="input">
@@ -55,7 +57,8 @@
     <div class="row">
       <div class="col-sm-offset-2 col-sm-8">
       	<label>Comment</label>
-    	<div style="border: 1px solid grey; width: 100%; height:200px;">
+    	<div style="border: 1px solid grey; width: 100%; height: 100px;"
+    			contenteditable="true">
     	</div>
     	<div class="text-right">
     	  <button class="text-right" id="reviewBtn">등록</button>
@@ -67,4 +70,19 @@
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="/resources/star.js"></script>
+<script>
+$(document).ready(function(){
+	
+	$("#searchBtn").on("click",function(e){
+		var _searchMoive = $("#searchMovie");
+		console.log("search............");
+		console.log(_searchMoive.val());
+		
+		$.getJSON("")
+		
+	});
+	
+
+});
+</script>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>

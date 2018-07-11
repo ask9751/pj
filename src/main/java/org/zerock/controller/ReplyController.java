@@ -21,10 +21,8 @@ import lombok.Setter;
 
 @RestController
 @RequestMapping("/replies")
-
 public class ReplyController {
 
-	
 	@Setter(onMethod_= {@Autowired})
 	private ReplyService service;
 
