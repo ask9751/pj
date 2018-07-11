@@ -7,7 +7,13 @@
 <link rel="stylesheet" type="text/css" href="/resources/star.css" />
 
 <!-- JS -->
-<script src="/resources/star.js"></script>
+<style>
+
+.modal-dialog {
+	width: 1000px;
+	margin: 30px auto;
+}
+</style>
 
 
 <div class="container">
@@ -23,7 +29,7 @@
 	        </div>
 	        <div class="modal-body">
 	 		  <div class="row">
-	  			<div id="showMovie" class="col-sm-offset-2 col-sm-8">
+	  			<div id="showMovie" class="col-sm-12">
 				영화뿌리는 공간
 	  			</div>
 	  			<!--  -->
