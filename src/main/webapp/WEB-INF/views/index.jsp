@@ -62,6 +62,7 @@ list-style: none;
 					<p>
 						<a style="color: white" href="/signup">회원가입페이지 이동</a>
 					</p>
+\
 				</div>
 			</div>
 		</div>
@@ -288,6 +289,7 @@ $(document).ready(function(){
 	(function() {
 		var name = '${prin}';
 		if(name != "") {
+
 			$("#myModal").modal();
 		}
 	})();
