@@ -45,11 +45,11 @@ star-input>.input.focus
 
 .movieImg {
 	width: 90%;
-	height: 290px;
+	height: 250px;
 	
 }
 
 #showMovie > div {
-	min-height: 400px;
+	min-height: 380px;
 	margin-bottom: 5px;
 }

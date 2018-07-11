@@ -2,17 +2,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-
-
+<!-- CSS -->
 <link href="/resources/carousel.css" rel="stylesheet">
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+<!-- JS -->
 <script src="/resources/bootstrap-3.3.2/dist/js/bootstrap.min.js"></script>
-
-<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 <script src="/resources/bootstrap-3.3.2/docs/assets/js/vendor/holder.js"></script>
-
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="/resources/bootstrap-3.3.2/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
 
 <style>
@@ -265,7 +260,7 @@ $(document).ready(function(){
 		e.preventDefault();
 		var infosrc = $(e.target)[0].parentElement.href;
 		console.log(infosrc);		
-	}); */
+	}); 
 	
 	/* $(".line").mouseenter(function(e){
 		console.log('mouseenter is call! ', this);

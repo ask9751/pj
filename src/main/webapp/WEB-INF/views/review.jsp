@@ -3,28 +3,31 @@
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
- <!-- starRating CSS -->
+<!-- CSS -->
 <link rel="stylesheet" type="text/css" href="/resources/star.css" />
- 
-<div class="main">
-  <div class="col-sm-12 col-md-12" style="margin-top: 50px;">
-    
-    
-    <!-- 위에는 영화 평점+리뷰 리스트가 나와야함 -->
-    <div class="row">
-      <div class="col-sm-offset-2 col-sm-8 text-right">
-        <label>영화검색기</label>
-        <input id="searchMovie" type="text"><button id="searchBtn">검색</button>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div id="showMovie" class="col-sm-offset-2 col-sm-8">
-    	영화뿌리는 공간
-   	  </div>
-    </div>
-    
-    <div class="row" style="margin-bottom:50px; display:none;">
+
+<!-- JS -->
+<script src="/resources/star.js"></script>
+
+
+<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="myModal" role="dialog">
+	    <div class="modal-dialog">
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 class="modal-title">Modal Header</h4>
+	        </div>
+	        <div class="modal-body">
+	 		  <div class="row">
+	  			<div id="showMovie" class="col-sm-offset-2 col-sm-8">
+				영화뿌리는 공간
+	  			</div>
+	  			<!--  -->
+	  			<div class="row" style="margin-bottom:50px;">
       <div class="col-sm-offset-2 col-sm-8">
 		<span class="star-input">
 		  <span class="input">
@@ -65,19 +68,48 @@
     	</div>
    	  </div>
     </div>
+	  			<!--  -->
+			  </div>
+	        </div>
+	        <div class="modal-footer">
+	          
+	        </div>
+	      </div>
+	      
+	    </div>
+	  </div>
+	  
+</div>
+<div class="main">
+  <div class="col-sm-12 col-md-12" style="margin-top: 50px;">
+        
+    <!-- 위에는 영화 평점+리뷰 리스트가 나와야함 -->
+    <div class="row">
+      <div class="col-sm-offset-2 col-sm-8 text-right">
+        <label>영화검색기</label>
+	    <input id="searchMovie" type="text"><button id="searchBtn">검색</button>    
+   	  </div>
+    </div>
+    
+    
+    <!-- ================================================================== -->
+	
+    
+    
     
   </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="/resources/star.js"></script>
+
+
 <script>
 $(document).ready(function(){
 	
+	/* naver movie api */
 	$("#searchBtn").on("click",function(e){
+		
 		var _searchMoive = $("#searchMovie");
 		var _showMovie = $("#showMovie");
 		var keyword = _searchMoive.val();
-		
 		
 		if(keyword == "") {
 			alert("검색어를 입력하세요...");
@@ -94,7 +126,8 @@ $(document).ready(function(){
 				}
 				str =
 					"<div class='col-sm-3'>"
-					+"<img class='movieImg' src='"+this.imgSrc+"'/>"
+					+"<input type='radio' name='movie_info' value='"+this.toString()+"'>"
+					+"<div><img class='movieImg' src='"+this.imgSrc+"'/></div>"
 					+"<div>제 목 :"+this.title+"</div>"
 					+"<div>개봉일 :"+this.pubDate+"</div>"
 					+"<div>감 독 :"+this.director+"</div>"
@@ -102,11 +135,10 @@ $(document).ready(function(){
 					+"</div>";
 				_showMovie.append(str);
 			});
-		});
-		
+		});	
+		$("#myModal").modal();
 	});
-	
-
+    
 });
 </script>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
