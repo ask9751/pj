@@ -33,14 +33,14 @@
 
 	<!-- fileUpload Pahth -->
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<!-- <beans:constructor-arg value="c:\\zzz\\upload"> -->
-		<beans:constructor-arg value="/Users/whwp0913/Desktop/files">
+		<beans:constructor-arg value="c:\\zzz\\upload">
+		<!-- <beans:constructor-arg value="/Users/whwp0913/Desktop/files"> -->
 		</beans:constructor-arg>
 	</beans:bean>
 
 	<beans:bean id="photoUploadPath" class="java.lang.String">
-		<!-- <beans:constructor-arg value="c:\\zzz\\photoUpload"> -->
- 		<beans:constructor-arg value="/Users/whwp0913/Desktop/files/img">
+		<beans:constructor-arg value="c:\\zzz\\photoUpload">
+ 		<!-- <beans:constructor-arg value="/Users/whwp0913/Desktop/files/img"> -->
 		</beans:constructor-arg>
 	</beans:bean>
 	
@@ -52,7 +52,7 @@
 		<interceptors>		
 			<interceptor>
 				<mapping path="/board/read"/>
-			    <beans:ref bean="ViewsCountInterceptor"/>
+			    <beans:ref bean="ViewCountInterceptor"/>
 			</interceptor>
 		</interceptors>
 
