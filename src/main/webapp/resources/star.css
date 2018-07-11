@@ -42,3 +42,14 @@ star-input>.input.focus
 
 .star-input>output
 {display:inline-block;width:60px; font-size:18px;text-align:right; vertical-align:middle;}
+
+.movieImg {
+	width: 90%;
+	height: 290px;
+	
+}
+
+#showMovie > div {
+	min-height: 400px;
+	margin-bottom: 5px;
+}

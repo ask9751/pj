@@ -19,7 +19,7 @@
     </div>
     
     <div class="row">
-      <div class="col-sm-offset-2 col-sm-8">
+      <div id="showMovie" class="col-sm-offset-2 col-sm-8">
     	영화뿌리는 공간
    	  </div>
     </div>
@@ -75,10 +75,34 @@ $(document).ready(function(){
 	
 	$("#searchBtn").on("click",function(e){
 		var _searchMoive = $("#searchMovie");
-		console.log("search............");
-		console.log(_searchMoive.val());
+		var _showMovie = $("#showMovie");
+		var keyword = _searchMoive.val();
 		
-		$.getJSON("")
+		
+		if(keyword == "") {
+			alert("검색어를 입력하세요...");
+			_searchMoive.focus();
+		}
+		
+		_showMovie.html("");				
+		$.getJSON("/reviews/"+keyword, function(data){
+			console.log(data);
+			$(data).each(function(e){
+				var str = "";
+				if(this.imgSrc == "") {
+					this.imgSrc = "https://ssl.pstatic.net/static/movie/2012/06/dft_img203x290.png";
+				}
+				str =
+					"<div class='col-sm-3'>"
+					+"<img class='movieImg' src='"+this.imgSrc+"'/>"
+					+"<div>제 목 :"+this.title+"</div>"
+					+"<div>개봉일 :"+this.pubDate+"</div>"
+					+"<div>감 독 :"+this.director+"</div>"
+					+"<div>유저평점 :"+this.userRating+"</div>"
+					+"</div>";
+				_showMovie.append(str);
+			});
+		});
 		
 	});
 	

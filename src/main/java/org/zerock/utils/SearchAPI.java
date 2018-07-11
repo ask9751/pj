@@ -63,6 +63,7 @@ public class SearchAPI {
             	result.setPubDate(object.get("pubDate").toString());
             	result.setDirector(object.get("director").toString().split("\\|")[0]);
             	result.setUserRating(object.get("userRating").toString());
+            	result.setImgSrc(object.get("image").toString());
             	result.setUniqueCode(result.getLink().split("=")[1]);
             	
             	list.add(result);
