@@ -21,9 +21,11 @@ public class SearchAPI {
 
 		String clientId = "lymD0PHGjImLKtyrxgpv";// 애플리케이션 클라이언트 아이디값";
 		String clientSecret = "UTYB8hQAKN";// 애플리케이션 클라이언트 시크릿값";
+		String display = "20";
+		
 		try {
 			String text = URLEncoder.encode(keyword, "UTF-8");
-			String apiURL = "https://openapi.naver.com/v1/search/movie?query=" + text; // json 결과
+			String apiURL = "https://openapi.naver.com/v1/search/movie?query=" + text + "&display=" + display; // json 결과
 			// String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text;
 			// // xml 결과
 			URL url = new URL(apiURL);

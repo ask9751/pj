@@ -266,11 +266,8 @@ $(document).ready(function(){
 		e.preventDefault();
 		var infosrc = $(e.target)[0].parentElement.href;
 		console.log(infosrc);		
-<<<<<<< HEAD
-	});
-=======
+
 	}); 
->>>>>>> 2cb7fa3efac694198b0fa2a1abeb1e0efef689b4
 	
 	/* $(".line").mouseenter(function(e){
 		console.log('mouseenter is call! ', this);
