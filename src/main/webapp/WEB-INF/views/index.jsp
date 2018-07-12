@@ -2,9 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-
-
+<!-- CSS -->
 <link href="/resources/carousel.css" rel="stylesheet">
+
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <!-- <script src="/resources/bootstrap-3.3.2/dist/js/bootstrap.min.js"></script> -->
@@ -14,6 +14,7 @@
 
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="/resources/bootstrap-3.3.2/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
+
 
 <style>
 .movimg {
@@ -265,7 +266,11 @@ $(document).ready(function(){
 		e.preventDefault();
 		var infosrc = $(e.target)[0].parentElement.href;
 		console.log(infosrc);		
+<<<<<<< HEAD
 	});
+=======
+	}); 
+>>>>>>> 2cb7fa3efac694198b0fa2a1abeb1e0efef689b4
 	
 	/* $(".line").mouseenter(function(e){
 		console.log('mouseenter is call! ', this);
