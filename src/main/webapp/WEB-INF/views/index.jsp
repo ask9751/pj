@@ -7,7 +7,7 @@
 <link href="/resources/carousel.css" rel="stylesheet">
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="/resources/bootstrap-3.3.2/dist/js/bootstrap.min.js"></script>
+<!-- <script src="/resources/bootstrap-3.3.2/dist/js/bootstrap.min.js"></script> -->
 
 <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 <script src="/resources/bootstrap-3.3.2/docs/assets/js/vendor/holder.js"></script>
@@ -265,7 +265,7 @@ $(document).ready(function(){
 		e.preventDefault();
 		var infosrc = $(e.target)[0].parentElement.href;
 		console.log(infosrc);		
-	}); */
+	});
 	
 	/* $(".line").mouseenter(function(e){
 		console.log('mouseenter is call! ', this);

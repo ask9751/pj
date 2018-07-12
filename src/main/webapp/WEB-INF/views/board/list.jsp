@@ -106,15 +106,14 @@ th {
             value="${pm.cri.keyword}"/>
             </div>
           
-            <div class="col-sm-1">
-            
-            <button id="btn_search" class="btn btn-xs btn-primary">SEARCH</button>
- <!--            <button id="btn_write" class="btn btn-xs btn-info">등록</button> -->
+            <div class="col-sm-2">      
+            	<button id="btn_search" class="btn btn-xs btn-primary">SEARCH</button>
+             	<button id="btn_write" class="btn btn-xs btn-info">등록</button>
             </div>
           
-            <div class="col-sm-1">
-            <button id="btn_write" class="btn btn-xs btn-info">등록</button>
-            </div>
+<!--             <div class="col-sm-1">
+            	<button id="btn_write" class="btn btn-xs btn-info">등록</button>
+            </div> -->
    
          </div>
        </div> 

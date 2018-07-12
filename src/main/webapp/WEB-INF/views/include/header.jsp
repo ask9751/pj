@@ -17,21 +17,10 @@
 <link href="/resources/bootstrap-3.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="/resources/dashboard.css" rel="stylesheet">
 
-
-<!-- JAVA SCRIPT -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-	crossorigin="anonymous"></script>
-<script src="/resources/bootstrap-3.3.2/docs/assets/js/ie-emulation-modes-warning.js"></script>
-
 <!-- Photo Board -->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
 </head>
 <style>
 /* ul li{
@@ -102,12 +91,15 @@ body{
 				<li><a href="/index">Home</a></li>
 				<li><a href="/board/list">Board</a></li>
 				<li><a href="/photo/list">Gallery</a></li>
-				<li><a href="#">About us</a></li>
+				<li><a href="/review">Reviews</a></li>
 				<li><a href="/mailForm">Q&A</a></li>					
 			</ul>
 		</div>
 	</div>				
 </nav>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
 <script>
 $(document).ready(function(){
 	
