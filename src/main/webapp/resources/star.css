@@ -53,11 +53,10 @@ star-input>.input.focus
 	min-height: 380px;
 	margin-bottom: 5px;
 }
-
-table {
-	width : 100%;
+th {
+	text-align: center;
 }
 td {
-	border : 1px 0px 1px 0px solid black;
-	
+	text-align: center;
 }
+

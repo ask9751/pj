@@ -21,11 +21,11 @@
         <div class="modal-body">
  		  <div class="row">
   			
-  			<div id="showMovie" class="col-sm-12">
+  			<div id="showMovie" class="col-sm-offset-1 col-sm-10">
 			</div>
 	  			
 			<div class="row" style="margin-bottom:50px;">
-      		  <div class="col-sm-offset-2 col-sm-8">
+      		  <div class="col-sm-offset-1 col-sm-10">
 			    <span class="star-input">
 		  		  <span class="input">
 		    	    <input type="radio" name="star-input" value="1" id="p1">
@@ -55,7 +55,7 @@
     	    </div>
     
     		<div class="row">
-      		  <div class="col-sm-offset-2 col-sm-8">
+      		  <div class="col-sm-offset-1 col-sm-10">
       	        <label>Comment</label>
     			<div style="border: 1px solid grey; width: 100%; height: 100px;"
     			  contenteditable="true" id="comment">
@@ -74,12 +74,12 @@
   </div>
 </div>
 <!-- Modal end -->
-<div class="main">
-  <div class="col-sm-12 col-md-12" style="margin-top: 50px;">      
+<div class="main" >
+  <div class="col-sm-12 col-md-12" style="margin:50px 0px 50px 0px;">      
     
     <!-- 위에는 영화 평점+리뷰 리스트가 나와야함 -->
     <div class="row">
-      <div class="col-sm-offset-2 col-sm-8 text-right">
+      <div class="col-sm-offset-1 col-sm-10 text-right">
         <label>영화검색기</label>
 	    <input id="searchMovie" type="text"><button id="searchBtn">검색</button>    
    	  </div>
@@ -87,20 +87,20 @@
     
     
     <div class="row">
-      <div class="col-sm-offset-1 col-sm-10 text-center">
-    	<table>
+      <div class="col-sm-offset-1 col-sm-10">
+    	<table class="table">
     	<tr>
-    	<th>번호 </th>
-    	<th>사진 </th>
-    	<th>평점 </th>
-    	<th>후기 </th>
+    	<th><span>번호</span></th>
+    	<th>평점</th>
+    	<th>사진</th>
+    	<th>후기</th>
     	<th>글쓴이 앤드 날</th>
     	</tr>
     	<c:forEach var="list" items="${list}">
     	<tr>
-    	<td>${list.vno }</td>
-    	<td><img src="${list.imgLink }"></td>
+    	<td>${list.vno }</td>    	
     	<td>${list.rating }</td>
+    	<td><img src="${list.imgLink }"></td>
     	<td>${list.title}${list.comment }</td>
     	<td>${list.mid } ${list.regdate }</td>
     	</tr>
@@ -137,13 +137,16 @@ $(document).ready(function(){
 				}
 				str =
 					"<div class='col-sm-3'>"
+					+"<div class='text-center' style='margin-bottom: 5px;'>"
 					+"<input type='radio' name='movie_info' data-link='"+this.imgSrc+"'value='"+this.title+"'>"
+					+"</div>"
 					+"<div><img class='movieImg' src='"+this.imgSrc+"'/></div>"
 					+"<div>제 목 :"+this.title+"</div>"
 					+"<div>개봉일 :"+this.pubDate+"</div>"
 					+"<div>감 독 :"+this.director+"</div>"
 					+"<div>유저평점 :"+this.userRating+"</div>"
 					+"</div>";
+					
 				_showMovie.append(str);
 			});
 		});	
