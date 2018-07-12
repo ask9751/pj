@@ -21,6 +21,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
   	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 	  crossorigin="anonymous"></script>
+
 </head>
 
 <style>
@@ -92,12 +93,15 @@ body{
 				<li><a href="/index">Home</a></li>
 				<li><a href="/board/list">Board</a></li>
 				<li><a href="/photo/list">Gallery</a></li>
-				<li><a href="#">About us</a></li>
+				<li><a href="/review">Reviews</a></li>
 				<li><a href="/mailForm">Q&A</a></li>					
 			</ul>
 		</div>
 	</div>				
 </nav>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
 <script>
 $(document).ready(function(){
 	

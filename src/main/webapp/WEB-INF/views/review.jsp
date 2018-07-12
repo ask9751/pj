@@ -87,22 +87,22 @@
     
     
     <div class="row">
-      <div class="col-sm-offset-1 col-sm-10">
+      <div class="col-sm-offset-1 col-sm-10 text-center">
     	<table class="table">
     	<tr>
-    	<th><span>번호</span></th>
-    	<th>평점</th>
-    	<th>사진</th>
-    	<th>후기</th>
-    	<th>글쓴이 앤드 날</th>
+    	<td>번호 </td>
+    	<td>사진 </td>
+    	<td>평점 </td>
+    	<td>후기 </td>
+    	<td>글쓴이/등록일</td>
     	</tr>
     	<c:forEach var="list" items="${list}">
     	<tr>
     	<td>${list.vno }</td>    	
-    	<td>${list.rating }</td>
     	<td><img src="${list.imgLink }"></td>
-    	<td>${list.title}${list.comment }</td>
-    	<td>${list.mid } ${list.regdate }</td>
+    	<td>${list.rating }</td>
+    	<th><p style="color: red;">${list.title}</p><p>${list.comment}</p></th>
+    	<th><p>${list.regdate }</p><p>${list.mid}</p></th>
     	</tr>
     	</c:forEach>
     	</table>
@@ -113,6 +113,10 @@
   </div>
 </div>
 
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	  crossorigin="anonymous"></script>
 
 <script>
 $(document).ready(function(){
@@ -125,6 +129,7 @@ $(document).ready(function(){
 		if(keyword == "") {
 			alert("검색어를 입력하세요...");
 			_searchMoive.focus();
+			return false;
 		}
 		
 		_showMovie.html("");				

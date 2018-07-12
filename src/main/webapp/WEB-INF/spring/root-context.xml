@@ -78,6 +78,9 @@
 	<mybatis-spring:scan
 		base-package="org.zerock.mapper" />
 		
+		
+	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate"></bean>
+		
 
 
 </beans>
