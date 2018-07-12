@@ -324,7 +324,7 @@ $(".upload").on("click","div span img",function(e) {
 	 });
 	
 	 /* 댓글 수정 */
-	 $(".replyBox").on("click","div #reModiBtn",function(e){    
+	$(".replyBox").on("click","div #reModiBtn",function(e){    
 	var target = e.target;
 	var replyMid = target.parentElement.childNodes[0].innerText;
 	
@@ -354,7 +354,7 @@ $(".upload").on("click","div span img",function(e) {
 	 });
 	       
 	 /* 댓글 삭제 시작*/
-	 $(".replyBox").on("click","div #redeleteBtn",function(e){  
+	$(".replyBox").on("click","div #redeleteBtn",function(e){  
 	var target = e.target;
 	var replyMid = target.parentElement.childNodes[0].innerText;
 	

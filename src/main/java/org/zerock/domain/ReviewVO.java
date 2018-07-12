@@ -8,9 +8,10 @@ import lombok.Data;
 public class ReviewVO {
 
 	private int vno;
-	private double score;
-	private String comment;
 	private String mid;
+	private String title;
+	private String comment;
+	private String rating;
 	private String imgLink;
 	private Date regdate;
 }

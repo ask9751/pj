@@ -13,11 +13,10 @@
 
 <title>Movie Village</title>
 <!-- CSS -->
-<link href="/resources/bootstrap-3.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/resources/bootstrap-3.3.2/dist/css/bootstrap.css" rel="stylesheet">
 <link href="/resources/dashboard.css" rel="stylesheet">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-<!-- Photo Board -->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
   	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -70,7 +69,7 @@ body{
 		  </c:when>
 		  <c:otherwise>
 		  	<li style="float: right;"><a class="logout">로그아웃</a></li>	
-		  	<li style="float: right;"><a href="#">${pageContext.request.userPrincipal.name}님</a></li>
+		  	<li style="float: right;"><a id="mid" href="#">${pageContext.request.userPrincipal.name}님</a></li>
 		  </c:otherwise>
 		</c:choose>				
 		</ul>

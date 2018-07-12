@@ -5,11 +5,6 @@
 <!-- CSS -->
 <link href="/resources/carousel.css" rel="stylesheet">
 
-<!-- JS -->
-<script src="/resources/bootstrap-3.3.2/dist/js/bootstrap.min.js"></script>
-<script src="/resources/bootstrap-3.3.2/docs/assets/js/vendor/holder.js"></script>
-<script src="/resources/bootstrap-3.3.2/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
-
 <style>
 .movimg {
 	margin-bottom : 5px;

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		
+<mapper namespace="org.zerock.mapper.ReviewMapper">
+	<insert id="insertReview">
+	insert into t_review (mid, title, comment, rating, imgLink)
+	values (#{mid}, #{title}, #{comment}, #{rating}, #{imgLink})
+	</insert>
+	
+	<select id="listReviews" resultType="org.zerock.domain.ReviewVO">
+	select * from t_review where vno > 0 order by vno desc limit 0,10
+	</select>  
+</mapper>
