@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="/resources/star.css" />
@@ -86,7 +87,7 @@
     </div>
     
     
-    <div class="row">
+    <div class="row reviewList">
       <div class="col-sm-offset-1 col-sm-10 text-center">
     	<table class="table">
     	<tr>
@@ -101,8 +102,17 @@
     	<td>${list.vno }</td>
     	<td><img src="${list.imgLink }"></td>
     	<td>${list.rating }</td>
-    	<th><p style="color: red;">${list.title}</p><p>${list.comment}</p></th>
-    	<th><p>${list.mid}</p> <p>${list.regdate }</p></th>
+    	<th><p style="color: red;">${list.title}</p><p><c:out value="${list.comment}"/></p></th>
+    	<th><p style="color: blue;">${list.mid}</p> 
+    	    <p><fmt:formatDate value='${list.regdate }' pattern="yyyy.MM.dd"/>
+	    	    <c:if test="${list.mid eq pageContext.request.userPrincipal.name}">
+	    	    <form id="${list.vno}">
+		    	    <input type="hidden" name="${list.vno}"> 
+		    	    <button id="removeBtn">삭제</button>
+	    	    </form>
+	    	    </c:if>
+    	    </p>
+    	</th>
     	</tr>
     	</c:forEach>
     	</table>
@@ -144,10 +154,10 @@ $(document).ready(function(){
 					"<div class='col-sm-3'>"
 					+"<input type='radio' name='movie_info' data-link='"+this.imgSrc+"'value='"+this.title+"'>"
 					+"<div><img class='movieImg' src='"+this.imgSrc+"'/></div>"
-					+"<div>제 목 :"+this.title+"</div>"
-					+"<div>개봉일 :"+this.pubDate+"</div>"
-					+"<div>감 독 :"+this.director+"</div>"
-					+"<div>유저평점 :"+this.userRating+"</div>"
+					+"<div>제 목 : "+this.title+"</div>"
+					+"<div>개봉일 : "+this.pubDate+"</div>"
+					+"<div>감 독 : "+this.director+"</div>"
+					+"<div>유저평점 : "+this.userRating+"</div>"
 					+"</div>";
 				_showMovie.append(str);
 			});
@@ -185,6 +195,32 @@ $(document).ready(function(){
 				self.location = "/review";	    
 		      }		      
 		});
+	});
+	
+	$(".reviewList").on("click","div #removeBtn",function(e){
+		
+		e.preventDefault();
+		var target = e.target;
+		var vno = target.parentElement[0].name;
+
+		if(confirm("정말 삭제하시겠습니까?")){
+			
+		    $.ajax({
+			    type : 'delete',
+			    url : "/reviews/remove/"+vno,
+			    beforeSend : function(xhr) {
+					xhr.setRequestHeader('x-CSRFToken','${_csrf.token}');
+				},
+			    headers : {
+			      "Content-Type" : "application/json",
+			      "X-HTTP-Method-Override" : "DELETE"
+			    },  
+			    dataType : 'text',
+			    success : function(result){
+			    	self.location = "/review";
+			      }
+			 });		
+		}	
 	});
     
 });

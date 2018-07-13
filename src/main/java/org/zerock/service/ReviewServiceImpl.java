@@ -23,6 +23,12 @@ public class ReviewServiceImpl implements ReviewService{
 	
 		return mapper.listReviews();
 	}
+
+	@Override
+	public void removeRiview(int vno) {
+		mapper.deleteReview(vno);
+	}
+	
 	
 	
 

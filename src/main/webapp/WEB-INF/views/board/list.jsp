@@ -2,11 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<style>
-th {
-	text-align: center;
-}
-</style>
 
 
 <div class="col-sm-12 col-md-12 main" style="margin-top: 50px;">
@@ -42,7 +37,7 @@ th {
 
 	<div class="row">
 
-		<div class="col-sm-offset-2 col-sm-8">
+		<div class="col-sm-offset-2 col-sm-8 table-responsive">
 			
 			<table width="100%" class="table table-hover">
 

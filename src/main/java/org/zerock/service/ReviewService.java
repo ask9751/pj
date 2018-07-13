@@ -9,5 +9,7 @@ public interface ReviewService {
 	public void registReview(ReviewVO vo);
 	
 	public List<ReviewVO> reviewList();
+	
+	public void removeRiview(int vno);
 
 }

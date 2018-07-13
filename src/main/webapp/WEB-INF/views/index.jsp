@@ -43,7 +43,7 @@ list-style: none;
 <!-- Carousel -->
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 	<!-- Indicators -->
-	<ol class="carousel-indicators">
+	<ol class="carousel-indicators" style="margin-bottom: 25px;">
 		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 		<li data-target="#myCarousel" data-slide-to="1"></li>
 		<li data-target="#myCarousel" data-slide-to="2"></li>
@@ -63,7 +63,6 @@ list-style: none;
 					<p>
 						<a style="color: white" href="/signup">회원가입페이지 이동</a>
 					</p>
-\
 				</div>
 			</div>
 		</div>
