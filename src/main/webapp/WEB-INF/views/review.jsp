@@ -120,6 +120,65 @@
     </div>
     
     
+    
+    	<div class="row">
+
+		<div class="col-sm-12">
+		<div class="col-sm-12 text-center">
+			<div id="pagination">
+				<ul class="pagination">
+					<c:set var="totalPage" value="${pm.total/10 }"/>
+					<fmt:parseNumber var="pages" value="${totalPage + (1-(totalPage%1))%1}" integerOnly="true"></fmt:parseNumber>
+					<li><span style="background-color: white;" >Page ${pm.cri.page} of ${pages}</span></li>
+
+					<c:if test="${pm.prev}">
+					<c:choose>
+					<c:when test="${pm.cri.type eq '' && pm.cri.keyword eq '' }">
+					<li><a class="btn btn-info"
+						href="review?page=${pm.startPage -1}">prev</a></li>
+					</c:when>
+					<c:otherwise>
+					<li><a class="btn btn-info"
+						href="review?page=${pm.startPage -1}&type=${pm.cri.type}&keyword=${pm.cri.keyword}">prev</a></li>
+					</c:otherwise>
+					</c:choose>
+					</c:if>
+
+				<c:forEach begin="${pm.startPage}" end="${pm.endPage}" var="idx">
+					<c:choose>
+					<c:when test="${pm.cri.type eq '' && pm.cri.keyword eq '' }">
+					<li ${pm.cri.page == idx ? 'class=active':''}><a id="pageLink" class="btn btn-secondary"
+						href="/review?page=${idx}">${idx}</a></li>
+					</c:when>
+					<c:otherwise>
+					<li ${pm.cri.page == idx ? 'class=active':''}><a id="pageLink" class="btn btn-secondary"
+						href="/review?page=${idx}&type=${pm.cri.type}&keyword=${pm.cri.keyword}">${idx}</a></li>
+					</c:otherwise>
+					</c:choose>
+				</c:forEach>
+
+				<c:if test="${pm.next}">
+					<c:choose>
+					<c:when test="${pm.cri.type eq '' && pm.cri.keyword eq '' }">
+					<li><a class="btn btn-info"
+						href="review?page=${pm.endPage + 1}">next</a></li>
+					</c:when>
+					<c:otherwise>
+					<li><a class="btn btn-info"
+						href="review?page=${pm.endPage + 1}&type=${pm.cri.type}&keyword=${pm.cri.keyword}">next</a></li>
+					</c:otherwise>
+					</c:choose>
+				</c:if>
+				</ul>
+			</div>
+
+			</div>
+		</div>
+	</div>
+    
+    
+    
+    
   </div>
 </div>
 
@@ -225,6 +284,9 @@ $(document).ready(function(){
 			 });		
 		}	
 	});
+	
+	
+	
     
 });
 </script>

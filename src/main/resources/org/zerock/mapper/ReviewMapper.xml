@@ -11,15 +11,15 @@
 	</insert>
 	
 	<select id="listReviews" resultType="org.zerock.domain.ReviewVO">
-	select * from t_review where vno > 0 order by vno desc limit 0,10
+	select * from t_review where vno > 0 order by vno desc limit #{pageStart},#{perPageNum}
 	</select>  
 	
 	<delete id="deleteReview">
 	delete from t_review where vno = #{vno}
 	</delete>
 	
-	<select id="">
-	
+	<select id="countReview" resultType="int">
+	select count(*) from t_review
 	
 	</select>
 	

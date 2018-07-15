@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.Criteria;
 import org.zerock.mapper.BoardMapper;
+import org.zerock.mapper.ReviewMapper;
+
 import lombok.Setter;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -18,6 +21,9 @@ public class BoardTests {
 	
 	@Setter(onMethod_= {@Autowired})
 	private BoardMapper mapper;
+	
+	@Autowired
+	private ReviewMapper mapper2;
 
 	@Test
 	public void testList() {
@@ -39,8 +45,11 @@ public class BoardTests {
 	}
 	
 	@Test
-	public void addFile() {
+	public void reviewCount() {
 
+		Criteria cri = new Criteria();
+		
+		System.out.println(mapper2.countReview(cri));
 	}
 	
 

@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.zerock.domain.Criteria;
+import org.zerock.domain.PageMaker;
 import org.zerock.domain.ReviewVO;
 import org.zerock.service.ReviewService;
 
@@ -21,10 +23,16 @@ public class ReviewController {
 	private ReviewService service;
 
 	@RequestMapping(value = "/review", method = RequestMethod.GET)
-	public void reviewGET(Model model) {
+	public void reviewGET(Model model, Criteria cri) {
 		log.info("review...in");
-		if(service.reviewList().size() != 0) {
-		model.addAttribute("list", service.reviewList());
+		if(service.reviewList(cri).size() != 0) {
+			
+			PageMaker pm = new PageMaker();
+			pm.setCri(cri);
+			pm.setTotal(service.totalReview(cri));
+			model.addAttribute("pm", pm);
+			
+			model.addAttribute("list", service.reviewList(cri));
 		}
 	}
 
