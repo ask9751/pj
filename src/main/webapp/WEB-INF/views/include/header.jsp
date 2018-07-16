@@ -59,6 +59,59 @@ body{
 
 </style>
 <body>
+<!-- Modal -->
+ <div class="container">
+ 
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog" style="margin:200px 360px;">    
+      <!-- Modal content-->
+      <div class="modal-content" style="width:700px;">
+      
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title text-center">
+          <c:if test="${favor ne null}">
+				오늘의 추천영화 
+		  </c:if></h4>
+        </div>
+        
+        <div class="modal-body">
+          <div class="row">
+			<div class="col-sm-12">		
+ 				<c:forEach items="${favor}" var="Recommend">
+				<div class="col-sm-4 text-center">
+ 					<div class="recommend"><img class="thumbnail"src="${Recommend.image}"></div>
+ 					
+						<div>${Recommend.title}</div>
+						<div>${Recommend.genre}</div>
+						<div>감독 : ${Recommend.director}</div>
+						<div>제작 국가 : ${Recommend.country}</div>
+					
+				</div>		
+				</c:forEach>	 	
+			</div>
+          </div>
+        </div>
+        
+        <div class="modal-footer">
+        	<div class="col-sm-12">
+        	  <label class="btn btn-primary active pull-left">
+        	    <input type="checkbox" value="notToday" name="notToday">
+        	    <span class="cr"></span>오늘 하루 이 창을 열지 않습니다
+        	  </label>
+        	  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        	</div>
+        	
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+</div>
+
+
 	<!-- Body 시작 -->
 	<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: white;">
 		<ul class="nav text-right" style="list-style: none; background-color: white;">
@@ -105,13 +158,24 @@ body{
 <script>
 $(document).ready(function(){
 	
+	var name = '${pageContext.request.userPrincipal.name}';
 	var Obj = $("#loginform");
+	
+ 	if(name != "" && window.name == ""){
+ 		$("#myModal").modal();
+		window.name = 1; //모달창 띄운 기록을 window.name에 기록
+		console.log(window.name);
+	} 
 	
 	$("ul").on("click",".logout",function(e){
 		if(confirm("로그아웃 하시겠습니까?")){
+			window.name = ""; //로그아웃 할 때 모달창 띄운 기록 초기화
+			sessionStorage.removeItem("showModal");
 			location.href = "/logout";
 		}
 	});
+	
+	
 });
 </script>
 	<!-- Header 끝 -->

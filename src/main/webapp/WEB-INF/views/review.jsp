@@ -9,7 +9,7 @@
 
 <div class="container">
   <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+  <div class="modal fade" id="searchModal" role="dialog">
     <div class="modal-dialog">   
 
       <!-- Modal content-->
@@ -104,14 +104,14 @@
     	<td>${list.rating }</td>
     	<th><p style="color: red;">${list.title}</p><p><c:out value="${list.comment}"/></p></th>
     	<th><p style="color: blue;">${list.mid}</p> 
-    	    <p><fmt:formatDate value='${list.regdate }' pattern="yyyy.MM.dd"/>
 	    	    <c:if test="${list.mid eq pageContext.request.userPrincipal.name}">
 	    	    <form id="${list.vno}">
-		    	    <input type="hidden" name="${list.vno}"> 
-		    	    <button id="removeBtn">삭제</button>
+    	    		<p><fmt:formatDate value='${list.regdate }' pattern="yyyy.MM.dd"/>
+			    	    <input type="hidden" name="${list.vno}"> 
+			    	    <button id="removeBtn">삭제</button>
+    	   			 </p>
 	    	    </form>
 	    	    </c:if>
-    	    </p>
     	</th>
     	</tr>
     	</c:forEach>
@@ -224,7 +224,7 @@ $(document).ready(function(){
 				_showMovie.append(str);
 			});
 		});	
-		$("#myModal").modal();
+		$("#searchModal").modal();
 	});
 	/* review submit */
 	$("#reviewBtn").on("click",function(e){

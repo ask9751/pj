@@ -103,60 +103,6 @@ list-style: none;
 		aria-hidden="true"></span> <span class="sr-only">Next</span>
 	</a>
 </div>
-	
-<!-- youtube media add -->
- <div class="container">
- 
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog" style="margin:200px 360px;">    
-      <!-- Modal content-->
-      <div class="modal-content" style="width:700px;">
-      
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title text-center">
-          <c:if test="${favor ne null}">
-				오늘의 추천영화 
-		  </c:if></h4>
-        </div>
-        
-        <div class="modal-body">
-          <div class="row">
-			<div class="col-sm-12">		
- 				<c:forEach items="${favor}" var="Recommend">
-				<div class="col-sm-4 text-center">
- 					<div class="recommend"><img class="thumbnail"src="${Recommend.image}"></div>
- 					
-						<div>${Recommend.title}</div>
-						<div>${Recommend.genre}</div>
-						<div>감독 : ${Recommend.director}</div>
-						<div>제작 국가 : ${Recommend.country}</div>
-					
-				</div>		
-				</c:forEach>	 	
-			</div>
-          </div>
-        </div>
-        
-        <div class="modal-footer">
-        	<div class="col-sm-12">
-        	  <label class="btn btn-primary active pull-left">
-        	    <input type="checkbox" value="notToday" name="notToday">
-        	    <span class="cr"></span>오늘 하루 이 창을 열지 않습니다
-        	  </label>
-        	  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        	</div>
-        	
-        </div>
-      </div>
-      
-    </div>
-  </div>
-
-</div>
-
-
 
 
 <div class="row imgbox">
@@ -264,7 +210,7 @@ $(document).ready(function(){
 	$('.info').on("click",function(e){
 		e.preventDefault();
 		var infosrc = $(e.target)[0].parentElement.href;
-		console.log(infosrc);		
+		console.log(infosrc);
 
 	}); 
 	
@@ -287,13 +233,6 @@ $(document).ready(function(){
 		$target.find('img').show();
 	}); */
 	
-	(function() {
-		var name = '${prin}';
-		if(name != "") {
-
-			$("#myModal").modal();
-		}
-	})();
 });
 </script>	
     <!-- Wrap the rest of the page in another container to center all the content. -->
