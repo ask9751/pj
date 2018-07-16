@@ -6,7 +6,12 @@
 
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="/resources/star.css" />
+<style>
+.focus label img {
+width:100px;
+}
 
+</style>
 <div class="container">
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
@@ -101,7 +106,19 @@
     	<tr>
     	<td>${list.vno }</td>    	
     	<td><img src="${list.imgLink }"></td>
-    	<td>${list.rating }</td>
+    	<td>${list.rating }
+	    	<span class="star-input">
+	    	
+			  <span class="input focus">	  	        
+	            <label style="display: inline-block;
+				    vertical-align: middle;
+				    background: url(resources/img/grade_img.png)no-repeat;
+				    background-size: 100px;
+				    background-position: 0 bottom;" for="${list.rating }"></label>
+	 		  </span>
+	 		
+		    </span>
+		</td>	    	
     	<th><p style="color: red;">${list.title}</p><p><c:out value="${list.comment}"/></p></th>
     	<th><p style="color: blue;">${list.mid}</p> 
     	    <p><fmt:formatDate value='${list.regdate }' pattern="yyyy.MM.dd"/>
@@ -176,17 +193,11 @@
 		</div>
 	</div>
     
-    
-    
-    
   </div>
 </div>
-
-
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
   	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 	  crossorigin="anonymous"></script>
-
 <script>
 $(document).ready(function(){
 	/* naver movie api */
@@ -200,7 +211,6 @@ $(document).ready(function(){
 			_searchMoive.focus();
 			return false;
 		}
-		
 		_showMovie.html("");				
 		$.getJSON("/reviews/"+keyword, function(data){
 			console.log(data);
@@ -218,7 +228,7 @@ $(document).ready(function(){
 					+"<div>제 목 : "+this.title+"</div>"
 					+"<div>개봉일 : "+this.pubDate+"</div>"
 					+"<div>감 독 : "+this.director+"</div>"
-					+"<div>유저평점 : "+this.userRating+"</div>"
+					+"<div>유저평점 : "+this.userRating+"</div>"		
 					+"</div>";
 					
 				_showMovie.append(str);
@@ -258,7 +268,7 @@ $(document).ready(function(){
 		      }		      
 		});
 	});
-	
+	/* review delete */
 	$(".reviewList").on("click","div #removeBtn",function(e){
 		
 		e.preventDefault();
@@ -284,10 +294,7 @@ $(document).ready(function(){
 			 });		
 		}	
 	});
-	
-	
-	
-    
+			    
 });
 </script>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
