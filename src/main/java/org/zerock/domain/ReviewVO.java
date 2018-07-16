@@ -11,7 +11,7 @@ public class ReviewVO {
 	private String mid;
 	private String title;
 	private String comment;
-	private String rating;
+	private float rating;
 	private String imgLink;
 	private Date regdate;
 }

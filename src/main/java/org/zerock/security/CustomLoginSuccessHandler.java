@@ -39,7 +39,6 @@ public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
 		HttpSession session = request.getSession();		
 		session.setAttribute("favor", mservice.recommendMovie(favor));
 		
-		
 		if (session != null) {
 			String redirectUrl = (String)session.getAttribute("prevPage");
 			
