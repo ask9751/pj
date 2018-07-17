@@ -26,13 +26,12 @@ public class ReviewController {
 	public void reviewGET(Model model, Criteria cri) {
 		log.info("review...in");
 		if(service.reviewList(cri).size() != 0) {
-			
+			model.addAttribute("list", service.reviewList(cri));			
 			PageMaker pm = new PageMaker();
 			pm.setCri(cri);
 			pm.setTotal(service.totalReview(cri));
 			model.addAttribute("pm", pm);
 			
-			model.addAttribute("list", service.reviewList(cri));
 		}
 	}
 

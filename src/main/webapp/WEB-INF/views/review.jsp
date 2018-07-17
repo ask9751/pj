@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/header.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -6,12 +7,7 @@
 
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="/resources/star.css" />
-<style>
-.focus label img {
-width:100px;
-}
 
-</style>
 <div class="container">
   <!-- Modal -->
   <div class="modal fade" id="searchModal" role="dialog">
@@ -87,7 +83,8 @@ width:100px;
     <div class="row">
       <div class="col-sm-offset-1 col-sm-10 text-right">
         <label>영화검색기</label>
-	    <input id="searchMovie" type="text"><button id="searchBtn">검색</button>    
+	    <input class="form-inline" id="searchMovie" type="text">
+	    <button id="searchBtn" class="btn btn-sm btn-default" style="vertical-align:bottom;">검색</button>    
    	  </div>
     </div>
     
@@ -95,109 +92,127 @@ width:100px;
     <div class="row reviewList">
       <div class="col-sm-offset-1 col-sm-10 text-center">
     	<table class="table">
-    	<tr>
-    	<td>번호 </td>
-    	<td>사진 </td>
-    	<td>평점 </td>
-    	<td>후기 </td>
-    	<td>글쓴이/등록일</td>
-    	</tr>
-    	<c:forEach var="list" items="${list}">
-    	<tr>
-    	<td>${list.vno }</td>    	
-    	<td><img src="${list.imgLink }"></td>
-    	<td>${list.rating }
-	    	<span class="star-input">
+	    	<tr>
+	    	<td>번호 </td>
+	    	<td>사진 </td>
+	    	<td>평점 </td>
+	    	<td>후기 </td>
+	    	<td>글쓴이/등록일</td>
+	    	</tr>
+	    	<c:forEach var="list" items="${list}">
+	    	<tr>
+	    	<td>${list.vno }</td>    	
+	    	<td><img src="${list.imgLink }"></td>
+	    	<td>${list.rating }
+	    		<span class="star-input">	    		
+	    			<span class="input focus">
+	    				<label style="display: inline-block;
+	    							vertical-align: middle;
+	    							background: url(resources/img/grade_img.png)no-repeat;
+	    							background-size: 150px;
+	    							background-position: 0 bottom;" for="${list.rating}"></label>
+	    			</span>    		
+	    		</span>
+	    	</td>
 	    	
-			  <span class="input focus">	  	        
-	            <label style="display: inline-block;
-				    vertical-align: middle;
-				    background: url(resources/img/grade_img.png)no-repeat;
-				    background-size: 100px;
-				    background-position: 0 bottom;" for="${list.rating }"></label>
-	 		  </span>
-	 		
-		    </span>
-		</td>	    	
-    	<th><p style="color: red;">${list.title}</p><p><c:out value="${list.comment}"/></p></th>
-    	<th><p style="color: blue;">${list.mid}</p> 
-	    	    <c:if test="${list.mid eq pageContext.request.userPrincipal.name}">
-	    	    <form id="${list.vno}">
-    	    		<p><fmt:formatDate value='${list.regdate }' pattern="yyyy.MM.dd"/>
-			    	    <input type="hidden" name="${list.vno}"> 
-			    	    <button id="removeBtn">삭제</button>
-    	   			 </p>
-	    	    </form>
-	    	    </c:if>
-    	</th>
-    	</tr>
+	    	
+	    	<th><p style="color: red;">${list.title}</p><p><c:out value="${list.comment}"/></p></th>
+	    	<th><p style="color: blue;">${list.mid}</p> 
+	    	    <p><fmt:formatDate value='${list.regdate }' pattern="yyyy.MM.dd"/>
+		    	    <c:if test="${list.mid eq pageContext.request.userPrincipal.name}">
+		    	    <form id="${list.vno}">
+				    	    <input type="hidden" name="${list.vno}"> 
+				    	    <button id="removeBtn">삭제</button>
+		    	    </form>
+		    	    </c:if>
+		    	 </p>
+	    	</th>
+	    	</tr>
     	</c:forEach>
     	</table>
    	  </div>
     </div>
-    
-    
-    
-    	<div class="row">
 
+<div class="row">
+	<div class="col-sm-offset-5 col-sm-7"> <!-- style="float: none; margin: 0 auto;"> -->
+		<form class="form-inline" method="get">
+			    <select name="type" id="type" class="form-control">
+				    <option value="">-----</option>
+				    <option value="w" ${pm.cri.type eq 'w'? "selected": '' }>작성자</option>
+				    <option value="t" ${pm.cri.type eq 't'? "selected": '' }>관련 영화</option>
+			    </select>
+				<input class="form-control" type="text" id="keyword" name="keyword" value="${pm.cri.keyword}"/>
+	  
+			    <button id="serarchBtn" class="btn btn-defalut">검색</button>
+	
+		</form>
+	</div>
+</div>
+    
+    
+    <div class="row">
 		<div class="col-sm-12">
-		<div class="col-sm-12 text-center">
-			<div id="pagination">
-				<ul class="pagination">
-					<c:set var="totalPage" value="${pm.total/10 }"/>
-					<fmt:parseNumber var="pages" value="${totalPage + (1-(totalPage%1))%1}" integerOnly="true"></fmt:parseNumber>
-					<li><span style="background-color: white;" >Page ${pm.cri.page} of ${pages}</span></li>
-
-					<c:if test="${pm.prev}">
-					<c:choose>
-					<c:when test="${pm.cri.type eq '' && pm.cri.keyword eq '' }">
-					<li><a class="btn btn-info"
-						href="review?page=${pm.startPage -1}">prev</a></li>
-					</c:when>
-					<c:otherwise>
-					<li><a class="btn btn-info"
-						href="review?page=${pm.startPage -1}&type=${pm.cri.type}&keyword=${pm.cri.keyword}">prev</a></li>
-					</c:otherwise>
-					</c:choose>
+			<div class="col-sm-12 text-center">
+				<div id="pagination">
+					<ul class="pagination">
+						<c:set var="totalPage" value="${pm.total/10 }"/>
+						<fmt:parseNumber var="pages" value="${totalPage + (1-(totalPage%1))%1}" integerOnly="true"></fmt:parseNumber>
+						<li><span style="background-color: white;" >Page ${pm.cri.page} of ${pages}</span></li>
+	
+						<c:if test="${pm.prev}">
+							<c:choose>
+							<c:when test="${pm.cri.type eq '' && pm.cri.keyword eq '' }">
+							<li><a class="btn btn-info"
+								href="review?page=${pm.startPage -1}">prev</a></li>
+							</c:when>
+							<c:otherwise>
+							<li><a class="btn btn-info"
+								href="review?page=${pm.startPage -1}&type=${pm.cri.type}&keyword=${pm.cri.keyword}">prev</a></li>
+							</c:otherwise>
+						</c:choose>
+						</c:if>
+	
+					<c:forEach begin="${pm.startPage}" end="${pm.endPage}" var="idx">
+						<c:choose>
+						<c:when test="${pm.cri.type eq '' && pm.cri.keyword eq '' }">
+						<li ${pm.cri.page == idx ? 'class=active':''}><a id="pageLink" class="btn btn-secondary"
+							href="/review?page=${idx}">${idx}</a></li>
+						</c:when>
+						<c:otherwise>
+						<li ${pm.cri.page == idx ? 'class=active':''}><a id="pageLink" class="btn btn-secondary"
+							href="/review?page=${idx}&type=${pm.cri.type}&keyword=${pm.cri.keyword}">${idx}</a></li>
+						</c:otherwise>
+						</c:choose>
+					</c:forEach>
+	
+					<c:if test="${pm.next}">
+						<c:choose>
+						<c:when test="${pm.cri.type eq '' && pm.cri.keyword eq '' }">
+						<li><a class="btn btn-info"
+							href="review?page=${pm.endPage + 1}">next</a></li>
+						</c:when>
+						<c:otherwise>
+						<li><a class="btn btn-info"
+							href="review?page=${pm.endPage + 1}&type=${pm.cri.type}&keyword=${pm.cri.keyword}">next</a></li>
+						</c:otherwise>
+						</c:choose>
 					</c:if>
-
-				<c:forEach begin="${pm.startPage}" end="${pm.endPage}" var="idx">
-					<c:choose>
-					<c:when test="${pm.cri.type eq '' && pm.cri.keyword eq '' }">
-					<li ${pm.cri.page == idx ? 'class=active':''}><a id="pageLink" class="btn btn-secondary"
-						href="/review?page=${idx}">${idx}</a></li>
-					</c:when>
-					<c:otherwise>
-					<li ${pm.cri.page == idx ? 'class=active':''}><a id="pageLink" class="btn btn-secondary"
-						href="/review?page=${idx}&type=${pm.cri.type}&keyword=${pm.cri.keyword}">${idx}</a></li>
-					</c:otherwise>
-					</c:choose>
-				</c:forEach>
-
-				<c:if test="${pm.next}">
-					<c:choose>
-					<c:when test="${pm.cri.type eq '' && pm.cri.keyword eq '' }">
-					<li><a class="btn btn-info"
-						href="review?page=${pm.endPage + 1}">next</a></li>
-					</c:when>
-					<c:otherwise>
-					<li><a class="btn btn-info"
-						href="review?page=${pm.endPage + 1}&type=${pm.cri.type}&keyword=${pm.cri.keyword}">next</a></li>
-					</c:otherwise>
-					</c:choose>
-				</c:if>
-				</ul>
-			</div>
-
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
     
+    
+    
+    
   </div>
 </div>
+
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
   	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 	  crossorigin="anonymous"></script>
+
 <script>
 $(document).ready(function(){
 	/* naver movie api */
@@ -211,6 +226,7 @@ $(document).ready(function(){
 			_searchMoive.focus();
 			return false;
 		}
+		
 		_showMovie.html("");				
 		$.getJSON("/reviews/"+keyword, function(data){
 			console.log(data);
@@ -228,7 +244,7 @@ $(document).ready(function(){
 					+"<div>제 목 : "+this.title+"</div>"
 					+"<div>개봉일 : "+this.pubDate+"</div>"
 					+"<div>감 독 : "+this.director+"</div>"
-					+"<div>유저평점 : "+this.userRating+"</div>"		
+					+"<div>유저평점 : "+this.userRating+"</div>"
 					+"</div>";
 					
 				_showMovie.append(str);
@@ -241,7 +257,7 @@ $(document).ready(function(){
 		var _input = $("input[name=movie_info]:radio:checked").closest('div');
 		var imgLink = _input.find('input').data('link');
 		var title = _input.find('input').val();
-		var rating = parseFloat($("#rating").text());
+		var rating = $("#rating").text();
 		var comment = $("#comment").text();
 		var mid = '${pageContext.request.userPrincipal.name}';
 		
@@ -268,7 +284,7 @@ $(document).ready(function(){
 		      }		      
 		});
 	});
-	/* review delete */
+	
 	$(".reviewList").on("click","div #removeBtn",function(e){
 		
 		e.preventDefault();
@@ -294,7 +310,10 @@ $(document).ready(function(){
 			 });		
 		}	
 	});
-			    
+	
+	
+	
+    
 });
 </script>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>
