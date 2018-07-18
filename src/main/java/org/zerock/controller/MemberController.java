@@ -42,7 +42,7 @@ public class MemberController {
 			
 		String referrer = request.getHeader("Referer");
 		
-//		System.out.println("로그인 컨트롤러 이전 페이지.........................................." + referrer);
+		System.out.println("로그인 컨트롤러 이전 페이지.........................................." + referrer);
 		
 		if(referrer == null) {
 			referrer = "http://localhost:8080/index";
@@ -74,7 +74,7 @@ public class MemberController {
 
 		String referrer = request.getHeader("Referer");
 		request.getSession().setAttribute("prevPage", referrer);
-//		System.out.println("회원가입 페이지 이전페이지 저장 URL................................" + referrer);
+		System.out.println("회원가입 페이지 이전페이지 저장 URL................................" + referrer);
 	}
 
 	@PostMapping("/signup")

@@ -3,6 +3,22 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<style>
+@media ( max-width : 767px) {
+	.selectType {
+		width: 35%;
+		height: 30px;
+		font-size: 11px;
+	}
+	.keywordInput {
+		width: 40%;
+		height: 30px;
+		font-size: 11px;
+	}
+}
+</style>
+
+
 
 <div class="col-sm-12 col-md-12 main" style="margin-top: 50px;">
 
@@ -39,21 +55,21 @@
 
 		<div class="col-sm-offset-2 col-sm-8 table-responsive">
 			
-			<table width="100%" class="table table-hover">
+			<table class="table table-hover">
 
 				<thead>
 					<tr>
-						<th width="10%">글번호</th>
-						<th width="50%">제목</th>
-						<th width="10%">작성자</th>
-						<th width="20%">작성일</th>
-						<th width="10%">조회수</th>
+						<th class="hidden-xs" style="width: 10%; text-align: center;" >글번호</th>
+						<th style="text-align: center;">제목</th>
+						<th style="text-align: center;">작성자</th>
+						<th style="text-align: center;">작성일</th>
+						<th style="text-align: center;">조회수</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${BoardVO}" var="board">
 						<tr style="text-align: center">
-							<td><c:out value="${board.bno}" /></td>
+							<td class="hidden-xs"><c:out value="${board.bno}" /></td>
 							<c:choose>
 								<c:when test="${pm.cri.type eq '' && pm.cri.keyword eq '' }">
 									<td style="text-align: left"><span><c:out value="[${board.kno}]"/></span> <a
@@ -78,14 +94,12 @@
 		</div>
 	</div>
 
-<form method="get">
-
-  <div class="form-group row">
+<form class="form-inline" method="get">
+   <div class="row">
     <div class="col-sm-offset-2 col-sm-8">
         <div class="row">
-
-            <div class="col-sm-2">
-              <select name="type" id="selectType" class="form-control">
+            <div class="col-sm-9">
+              <select name="type" id="selectType" class="form-control pull-left selectType">
                 <option value="">----</option>
                 <option value="t" ${pm.cri.type eq 't'? "selected": '' }>TITLE</option>
                 <option value="c" ${pm.cri.type eq 'c'? "selected": '' }>CONTENT</option>
@@ -94,15 +108,15 @@
                 <option value="tm" ${pm.cri.type eq 'tm'? "selected": '' }>TITLE+WRITER</option>
                 <option value="tcm" ${pm.cri.type eq 'tcm'? "selected": '' }>TITLE+CONTENT+WRITER</option>
               </select>
+            <input class="form-control pull-left keywordInput" type="text" id="keyword" name="keyword" value="${pm.cri.keyword}"/>
+            <button id="btn_search" class="btn btn-xs btn-primary pull-left">SEARCH</button>
             </div>
           
-            <div class="col-sm-8">
-            <input class="form-control" type="text" id="keyword" name="keyword" value="${pm.cri.keyword}"/>
-            </div>
+<!--             <div class="col-sm-8">
+            </div> -->
           
-            <div class="col-sm-2">      
-            	<button id="btn_search" class="btn btn-xs btn-primary">SEARCH</button>
-             	<button id="btn_write" class="btn btn-xs btn-info">등록</button>
+            <div class="col-sm-3">      
+             	<button id="btn_write" class="btn btn-xs btn-info pull-right">등록</button>
             </div>
           
 <!--             <div class="col-sm-1">
@@ -111,7 +125,7 @@
    
          </div>
        </div> 
-    </div> 
+    </div>
 </form>
 
 	<div class="row">
@@ -181,9 +195,7 @@ $(document).ready(function() {
 	if(msg=="regist"){
 		alert("등록이 완료되었습니다.");
 		location.reload();
-	
 	}
-	
 });
 
 	var btn = $("#btn_search")

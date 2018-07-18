@@ -60,7 +60,7 @@ public class ReviewRESTController {
 			e.getMessage();
 		}
 
-		return null;
+		return entity;
 	}
 	
 }

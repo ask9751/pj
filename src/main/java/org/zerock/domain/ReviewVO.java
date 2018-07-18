@@ -9,6 +9,8 @@ public class ReviewVO {
 
 	private int vno;
 	private String mid;
+	private int mno;
+	private String code;
 	private String title;
 	private String comment;
 	private float rating;
