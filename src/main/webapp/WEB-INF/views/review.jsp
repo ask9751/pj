@@ -217,6 +217,7 @@ $(document).ready(function(){
 		if(keyword == "") {
 			alert("검색어를 입력하세요...");
 			_searchMoive.focus();
+			
 			return false;
 		}
 		_showMovie.html("");				
