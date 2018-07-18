@@ -5,9 +5,13 @@
 		
 <mapper namespace="org.zerock.mapper.ReviewMapper">
 
-	<insert id="insertReview">
-	insert into t_review (mid, title, comment, rating, imgLink)
-	values (#{mid}, #{title}, #{comment}, #{rating}, #{imgLink})
+<insert id="insertReview" parameterType="org.zerock.domain.ReviewVO">
+		<selectKey order="BEFORE" keyProperty="mno" resultType="int">
+			select mno from t_member where mid = #{mid}
+		</selectKey>
+	
+		insert into t_review (mid, title, code, comment, rating, imgLink, mno)
+		values (#{mid}, #{title}, #{code}, #{comment}, #{rating}, #{imgLink}, #{mno})
 	</insert>
 	
 	<sql id="criteria">

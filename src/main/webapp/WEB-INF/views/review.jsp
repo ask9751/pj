@@ -226,11 +226,11 @@ $(document).ready(function(){
 			_searchMoive.focus();
 			return false;
 		}
-		
 		_showMovie.html("");				
 		$.getJSON("/reviews/"+keyword, function(data){
 			console.log(data);
 			$(data).each(function(e){
+				
 				var str = "";
 				if(this.imgSrc == "") {
 					this.imgSrc = "https://ssl.pstatic.net/static/movie/2012/06/dft_img203x290.png";
@@ -245,6 +245,7 @@ $(document).ready(function(){
 					+"<div>개봉일 : "+this.pubDate+"</div>"
 					+"<div>감 독 : "+this.director+"</div>"
 					+"<div>유저평점 : "+this.userRating+"</div>"
+					+"<input type='hidden' name='code' value='"+this.uniqueCode+"'/>"
 					+"</div>";
 					
 				_showMovie.append(str);
@@ -257,10 +258,11 @@ $(document).ready(function(){
 		var _input = $("input[name=movie_info]:radio:checked").closest('div');
 		var imgLink = _input.find('input').data('link');
 		var title = _input.find('input').val();
-		var rating = $("#rating").text();
+		var rating = parseFloat($("#rating").text());
+		var code = parseInt($("input[name=code]").val());
 		var comment = $("#comment").text();
 		var mid = '${pageContext.request.userPrincipal.name}';
-		
+		console.log(code);
 		$.ajax({
 		      type: "post",
 		      url : "/review",
@@ -277,7 +279,8 @@ $(document).ready(function(){
 		        title : title,
 		        comment : comment,
 		        rating : rating,
-		        imgLink : imgLink
+		        imgLink : imgLink,
+		        code : code
 		      }),
 		      success : function(result) {		
 				self.location = "/review";	    

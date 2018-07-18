@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 public class MemberVO {
+	private int mno;
 	private String mid, mpw, mname, email;
 	private String sessionKey;
 	private Date sessionLimit;
