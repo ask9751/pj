@@ -252,9 +252,10 @@ $(document).ready(function(){
 		var imgLink = _input.find('input').data('link');
 		var title = _input.find('input').val();
 		var rating = parseFloat($("#rating").text());
-		var code = parseInt($("input[name=code]").val());
-		var comment = $("#comment").text();
+		var code = parseInt(_input.parent().find("input[name=code]").val());
+		var _comment = $("#comment").text();
 		var mid = '${pageContext.request.userPrincipal.name}';
+		
 		console.log(code);
 		$.ajax({
 		      type: "post",
