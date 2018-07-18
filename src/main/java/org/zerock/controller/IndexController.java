@@ -1,17 +1,11 @@
 package org.zerock.controller;
 
 import java.io.IOException;
-import java.security.Principal;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.zerock.service.IndexService;
-import org.zerock.service.MemberService;
 
 @Controller
 public class IndexController {

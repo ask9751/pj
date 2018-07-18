@@ -93,17 +93,17 @@
       <div class="col-sm-offset-1 col-sm-10 text-center">
     	<table class="table">
 	    	<tr>
-	    	<td>번호 </td>
-	    	<td>사진 </td>
-	    	<td>평점 </td>
-	    	<td>후기 </td>
-	    	<td>글쓴이/등록일</td>
+	    	  <td>번호 </td>
+	    	  <td>사진 </td>
+	    	  <td>평점 </td>
+	    	  <td>후기 </td>
+	    	  <td>글쓴이/등록일</td>
 	    	</tr>
 	    	<c:forEach var="list" items="${list}">
 	    	<tr>
-	    	<td>${list.vno }</td>    	
-	    	<td><img src="${list.imgLink }"></td>
-	    	<td>${list.rating }
+	    	  <td>${list.vno }</td>    	
+	    	  <td><img src="${list.imgLink }"></td>
+	    	  <td>${list.rating }
 	    		<span class="star-input">	    		
 	    			<span class="input focus">
 	    				<label style="display: inline-block;
@@ -113,9 +113,7 @@
 	    							background-position: 0 bottom;" for="${list.rating}"></label>
 	    			</span>    		
 	    		</span>
-	    	</td>
-	    	
-	    	
+	    	</td>	    		    	
 	    	<th><p style="color: red;">${list.title}</p><p><c:out value="${list.comment}"/></p></th>
 	    	<th><p style="color: blue;">${list.mid}</p> 
 	    	    <p><fmt:formatDate value='${list.regdate }' pattern="yyyy.MM.dd"/>
@@ -202,17 +200,12 @@
 			</div>
 		</div>
 	</div>
-    
-    
-    
-    
   </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
   	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 	  crossorigin="anonymous"></script>
-
 <script>
 $(document).ready(function(){
 	/* naver movie api */
@@ -226,11 +219,11 @@ $(document).ready(function(){
 			_searchMoive.focus();
 			return false;
 		}
-		
 		_showMovie.html("");				
 		$.getJSON("/reviews/"+keyword, function(data){
 			console.log(data);
 			$(data).each(function(e){
+				
 				var str = "";
 				if(this.imgSrc == "") {
 					this.imgSrc = "https://ssl.pstatic.net/static/movie/2012/06/dft_img203x290.png";
@@ -245,6 +238,7 @@ $(document).ready(function(){
 					+"<div>개봉일 : "+this.pubDate+"</div>"
 					+"<div>감 독 : "+this.director+"</div>"
 					+"<div>유저평점 : "+this.userRating+"</div>"
+					+"<input type='hidden' name='code' value='"+this.uniqueCode+"'/>"
 					+"</div>";
 					
 				_showMovie.append(str);
@@ -257,10 +251,12 @@ $(document).ready(function(){
 		var _input = $("input[name=movie_info]:radio:checked").closest('div');
 		var imgLink = _input.find('input').data('link');
 		var title = _input.find('input').val();
-		var rating = $("#rating").text();
-		var comment = $("#comment").text();
+		var rating = parseFloat($("#rating").text());
+		var code = parseInt(_input.parent().find("input[name=code]").val());
+		var _comment = $("#comment").text();
 		var mid = '${pageContext.request.userPrincipal.name}';
 		
+		console.log(code);
 		$.ajax({
 		      type: "post",
 		      url : "/review",
@@ -277,7 +273,8 @@ $(document).ready(function(){
 		        title : title,
 		        comment : comment,
 		        rating : rating,
-		        imgLink : imgLink
+		        imgLink : imgLink,
+		        code : code
 		      }),
 		      success : function(result) {		
 				self.location = "/review";	    
@@ -311,9 +308,6 @@ $(document).ready(function(){
 		}	
 	});
 	
-	
-	
-    
 });
 </script>
 <%@ include file="/WEB-INF/views/include/footer.jsp"%>

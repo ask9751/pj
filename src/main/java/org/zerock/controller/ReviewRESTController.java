@@ -34,7 +34,7 @@ public class ReviewRESTController {
 		try {
 			List<SearchResult> list = null;
 			list = SearchAPI.searchMovie(keyword);
-			
+									
 			entity = new ResponseEntity<List<SearchResult>>(list, HttpStatus.OK);
 			
 		} catch (Exception e) {
@@ -45,21 +45,18 @@ public class ReviewRESTController {
 	
 	//리뷰 삭제
 	@RequestMapping(value = "/remove/{vno}", method =RequestMethod.DELETE)
-	public ResponseEntity<String> removeReview(@PathVariable("vno") int vno) {
-		
-		log.info("Review remove..........." + vno);
-		
+	public ResponseEntity<String> removeReview(@PathVariable("vno") int vno) {		
+		log.info("Review remove..........." + vno);		
 		ResponseEntity<String> entity  = null;
 		
 		try {
-			service.removeRiview(vno);
 			
+			service.removeRiview(vno);			
 			entity = new ResponseEntity<String>("삭제되었습니다",HttpStatus.OK);
 			
 		} catch (Exception e) {
 			e.getMessage();
 		}
-
 		return entity;
 	}
 	
