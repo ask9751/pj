@@ -6,12 +6,7 @@
 
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="/resources/star.css" />
-<style>
-.focus label img {
-width:100px;
-}
 
-</style>
 <div class="container">
   <!-- Modal -->
   <div class="modal fade" id="searchModal" role="dialog">
@@ -107,20 +102,18 @@ width:100px;
     	<td>${list.vno }</td>    	
     	<td><img src="${list.imgLink }"></td>
     	<td>${list.rating }
-	    	<span class="star-input">
-	    	
+	    	<span class="star-input">	    	
 			  <span class="input focus">	  	        
 	            <label style="display: inline-block;
 				    vertical-align: middle;
 				    background: url(resources/img/grade_img.png)no-repeat;
-				    background-size: 100px;
+				    background-size: 150px;
 				    background-position: 0 bottom;" for="${list.rating }"></label>
-	 		  </span>
-	 		
+	 		  </span>	 		
 		    </span>
 		</td>	    	
     	<th><p style="color: red;">${list.title}</p><p><c:out value="${list.comment}"/></p></th>
-    	<th><p style="color: blue;">${list.mid}</p> 
+    	<th><p style="color: blue;">${list.mid}</p>
 	    	    <c:if test="${list.mid eq pageContext.request.userPrincipal.name}">
 	    	    <form id="${list.vno}">
     	    		<p><fmt:formatDate value='${list.regdate }' pattern="yyyy.MM.dd"/>
@@ -215,6 +208,7 @@ $(document).ready(function(){
 		$.getJSON("/reviews/"+keyword, function(data){
 			console.log(data);
 			$(data).each(function(e){
+				
 				var str = "";
 				if(this.imgSrc == "") {
 					this.imgSrc = "https://ssl.pstatic.net/static/movie/2012/06/dft_img203x290.png";
@@ -228,7 +222,8 @@ $(document).ready(function(){
 					+"<div>제 목 : "+this.title+"</div>"
 					+"<div>개봉일 : "+this.pubDate+"</div>"
 					+"<div>감 독 : "+this.director+"</div>"
-					+"<div>유저평점 : "+this.userRating+"</div>"		
+					+"<div>유저평점 : "+this.userRating+"</div>"
+					+"<input type='hidden' name='code' value='"+this.uniqueCode+"'/>"
 					+"</div>";
 					
 				_showMovie.append(str);
@@ -242,9 +237,10 @@ $(document).ready(function(){
 		var imgLink = _input.find('input').data('link');
 		var title = _input.find('input').val();
 		var rating = parseFloat($("#rating").text());
+		var code = parseInt($("input[name=code]").val());
 		var comment = $("#comment").text();
 		var mid = '${pageContext.request.userPrincipal.name}';
-		
+		console.log(code);
 		$.ajax({
 		      type: "post",
 		      url : "/review",
@@ -261,7 +257,8 @@ $(document).ready(function(){
 		        title : title,
 		        comment : comment,
 		        rating : rating,
-		        imgLink : imgLink
+		        imgLink : imgLink,
+		        code : code
 		      }),
 		      success : function(result) {		
 				self.location = "/review";	    

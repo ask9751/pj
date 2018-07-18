@@ -33,6 +33,7 @@ public class ReviewController {
 			model.addAttribute("pm", pm);
 			
 			model.addAttribute("list", service.reviewList(cri));
+			
 		}
 	}
 

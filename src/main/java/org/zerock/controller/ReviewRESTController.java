@@ -33,6 +33,8 @@ public class ReviewRESTController {
 			List<SearchResult> list = null;
 			list = SearchAPI.searchMovie(keyword);
 			
+			
+			
 			entity = new ResponseEntity<List<SearchResult>>(list, HttpStatus.OK);
 			
 		} catch (Exception e) {
