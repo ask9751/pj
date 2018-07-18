@@ -83,6 +83,7 @@
 
 	</select>
 	
+
 	<!-- 파일 업로드 sql 시작 -->
 	<insert id="addFile" parameterType="org.zerock.domain.BoardVO" >
 		<selectKey order="BEFORE" keyProperty="bno" resultType="int">

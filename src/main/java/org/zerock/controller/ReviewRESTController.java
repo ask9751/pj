@@ -24,6 +24,8 @@ public class ReviewRESTController {
 	@Autowired
 	private ReviewService service;
 	
+	
+	//네이버 영화 검색 API 결과 리스트
 	@RequestMapping(value = "/{keyword}", method = RequestMethod.GET)
 	public ResponseEntity<List<SearchResult>> 
 		listMovies(@PathVariable("keyword") String keyword) {
@@ -32,9 +34,7 @@ public class ReviewRESTController {
 		try {
 			List<SearchResult> list = null;
 			list = SearchAPI.searchMovie(keyword);
-			
-			
-			
+									
 			entity = new ResponseEntity<List<SearchResult>>(list, HttpStatus.OK);
 			
 		} catch (Exception e) {
@@ -43,26 +43,22 @@ public class ReviewRESTController {
 		return entity;
 	}
 	
+	//리뷰 삭제
 	@RequestMapping(value = "/remove/{vno}", method =RequestMethod.DELETE)
-	public ResponseEntity<String> removeReview(@PathVariable("vno") int vno) {
-		
-		log.info("Review remove..........." + vno);
-		
+	public ResponseEntity<String> removeReview(@PathVariable("vno") int vno) {		
+		log.info("Review remove..........." + vno);		
 		ResponseEntity<String> entity  = null;
 		
 		try {
-			service.removeRiview(vno);
 			
+			service.removeRiview(vno);			
 			entity = new ResponseEntity<String>("삭제되었습니다",HttpStatus.OK);
 			
 		} catch (Exception e) {
 			e.getMessage();
 		}
-				
 		
-		
-		
-		return null;
+		return entity;
 	}
 	
 }

@@ -78,7 +78,7 @@
 		</div>
 	</div>
 
-	<form method="get">
+<form method="get">
 
   <div class="form-group row">
     <div class="col-sm-offset-2 col-sm-8">
@@ -97,8 +97,7 @@
             </div>
           
             <div class="col-sm-8">
-            <input class="form-control" type="text" id="keyword" name="keyword"
-            value="${pm.cri.keyword}"/>
+            <input class="form-control" type="text" id="keyword" name="keyword" value="${pm.cri.keyword}"/>
             </div>
           
             <div class="col-sm-2">      
