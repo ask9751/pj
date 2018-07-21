@@ -16,7 +16,7 @@ public class RecommendScheduler {
 	@Autowired
 	HikariDataSource ds;
 	
-	@Scheduled(fixedDelay=30000)
+	@Scheduled(fixedDelay=86400000)
 	public void startRe()throws Exception {
 		
 		rmapper.removeRecom();

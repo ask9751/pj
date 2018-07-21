@@ -64,9 +64,9 @@ body{
  
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog" style="margin:200px 360px;">    
+    <div class="modal-dialog">    
       <!-- Modal content-->
-      <div class="modal-content" style="width:700px;">
+      <div class="modal-content">
       
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -112,8 +112,8 @@ body{
 </div>
 
 
-	<!-- Body 시작 -->
-	<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: white;">
+<!-- Body 시작 -->
+<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: white;">
 		<ul class="nav text-right" style="list-style: none; background-color: white;">
 
 		<c:choose>
