@@ -208,8 +208,13 @@ list-style: none;
 $(document).ready(function(){
 
 	$('.info').on("click",function(e){
+		
 		e.preventDefault();
 		var infosrc = $(e.target)[0].parentElement.href;
+		
+		window.open(infosrc,"영화정보",
+		"width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+		
 		console.log(infosrc);
 
 	}); 

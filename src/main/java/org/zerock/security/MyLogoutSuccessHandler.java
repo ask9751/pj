@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
@@ -22,6 +23,14 @@ public class MyLogoutSuccessHandler extends SimpleUrlLogoutSuccessHandler implem
 
 			System.out.println(authentication.getName() + "---------------------------------------------");
         }
+		
+		HttpSession session = request.getSession();
+		if(session.getAttribute("naver") != null) {
+			session.invalidate();
+			response.setStatus(HttpStatus.OK.value());
+			response.sendRedirect(request.getHeader("referer"));
+			
+		}
 		
 		response.setStatus(HttpStatus.OK.value());
 		response.sendRedirect(request.getHeader("referer"));

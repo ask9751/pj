@@ -7,14 +7,38 @@
 @media ( max-width : 767px) {
 	.selectType {
 		width: 35%;
-		height: 30px;
+		height: 28px;
 		font-size: 11px;
 	}
 	.keywordInput {
 		width: 40%;
-		height: 30px;
+		height: 28px;
 		font-size: 11px;
 	}
+	
+	.btn{
+	line-height: 1.25;
+	}
+	#btn_write{
+	height: 28px;
+	margin-top: 10px;
+	margin-left: 280px;
+	}
+	#btn_search{
+	height: 28px;
+	}
+}
+
+@media ( min-width : 768px){
+
+.searchDiv{
+
+text-align: right;
+margin-top: 5px;
+margin-right: 270px;
+
+}
+
 }
 </style>
 
@@ -94,11 +118,8 @@
 		</div>
 	</div>
 
-<form class="form-inline" method="get">
-   <div class="row">
-    <div class="col-sm-offset-2 col-sm-8">
-        <div class="row">
-            <div class="col-sm-9">
+<form class="form-inline text-center searchDiv" method="get">
+   <div class="form-group">
               <select name="type" id="selectType" class="form-control pull-left selectType">
                 <option value="">----</option>
                 <option value="t" ${pm.cri.type eq 't'? "selected": '' }>TITLE</option>
@@ -109,23 +130,10 @@
                 <option value="tcm" ${pm.cri.type eq 'tcm'? "selected": '' }>TITLE+CONTENT+WRITER</option>
               </select>
             <input class="form-control pull-left keywordInput" type="text" id="keyword" name="keyword" value="${pm.cri.keyword}"/>
-            <button id="btn_search" class="btn btn-xs btn-primary pull-left">SEARCH</button>
             </div>
-          
-<!--             <div class="col-sm-8">
-            </div> -->
-          
-            <div class="col-sm-3">      
-             	<button id="btn_write" class="btn btn-xs btn-info pull-right">등록</button>
-            </div>
-          
-<!--             <div class="col-sm-1">
-            	<button id="btn_write" class="btn btn-xs btn-info">등록</button>
-            </div> -->
+            <button id="btn_search" class="btn btn-primary">SEARCH</button>
+            <button id="btn_write" class="btn btn-info">글등록</button>
    
-         </div>
-       </div> 
-    </div>
 </form>
 
 	<div class="row">

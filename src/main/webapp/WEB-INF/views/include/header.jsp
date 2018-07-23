@@ -25,6 +25,17 @@
 </head>
 
 <style>
+@media ( min-width : 768px) {
+
+	.modal-dialog{
+		margin: 300px auto;
+	}
+
+}
+
+
+
+
 /* ul li{
 list-style: none;
 }
@@ -64,9 +75,9 @@ body{
  
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog" style="margin:200px 360px;">    
+    <div class="modal-dialog">    
       <!-- Modal content-->
-      <div class="modal-content" style="width:700px;">
+      <div class="modal-content">
       
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -81,7 +92,7 @@ body{
 			<div class="col-sm-12">		
  				<c:forEach items="${favor}" var="Recommend">
 				<div class="col-sm-4 text-center">
- 					<div class="recommend"><img class="thumbnail"src="${Recommend.image}"></div>
+ 					<div class="recommend" style="text-align: center;"><img class="thumbnail"src="${Recommend.image}"></div>
  					
 						<div>${Recommend.title}</div>
 						<div>${Recommend.genre}</div>
@@ -115,16 +126,22 @@ body{
 	<!-- Body 시작 -->
 	<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: white;">
 		<ul class="nav text-right" style="list-style: none; background-color: white;">
-
 		<c:choose>
-		  <c:when test="${pageContext.request.userPrincipal.name eq null}">
+		  <c:when test="${pageContext.request.userPrincipal.name eq null && naver eq null}">
 		  	<li style="float: right;"><a href="/login">Sign in</a></li>
 			<li style="float: right;"><a href="/signup">Sign up</a></li>	
+		  </c:when>
+		  <c:when test="${naver != null}">
+		  	<li style="float: right;"><a class="logout">로그아웃</a></li>	
+		  	<li style="float: right;"><a id="mid" href="#"></a></li>
 		  </c:when>
 		  <c:otherwise>
 		  	<li style="float: right;"><a class="logout">로그아웃</a></li>	
 		  	<li style="float: right;"><a id="mid" href="#">${pageContext.request.userPrincipal.name}님</a></li>
 		  </c:otherwise>
+		  
+		  
+		  
 		</c:choose>				
 		</ul>
 		
@@ -158,6 +175,12 @@ body{
 <script>
 $(document).ready(function(){
 	
+	var naverName = sessionStorage.getItem("naverName");
+	console.log(naverName);
+	if(naverName != null){
+		$("#mid").html(naverName + "님");
+	}
+	
 	var name = '${pageContext.request.userPrincipal.name}';
 	var Obj = $("#loginform");
 	
@@ -171,7 +194,20 @@ $(document).ready(function(){
 		if(confirm("로그아웃 하시겠습니까?")){
 			window.name = ""; //로그아웃 할 때 모달창 띄운 기록 초기화
 			sessionStorage.removeItem("showModal");
-			location.href = "/logout";
+			
+			var logoutName = naverName+"님";
+			
+			if($("#mid")[0].text == logoutName){
+				console.log("네이버 아이디 로그아웃.......");
+				sessionStorage.removeItem("naverName");
+				/* location.href = "https://nid.naver.com/nidlogin.logout"; */
+				window.open("https://nid.naver.com/nidlogin.logout","네이버 로그아웃",
+						"width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+				location.href = "/logout";
+			}
+			else{
+				location.href = "/logout";
+			}
 		}
 	});
 	
