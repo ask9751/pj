@@ -159,7 +159,10 @@ body{
 		</div>
 				
 		<div id="navbar" class="navbar-collapse collapse">
+		
 			<ul class="nav navbar-nav" style="font-size: 18px;">
+			
+			<li class="pull-left"><img src="resources/img/leaf.png" style="width: 50px; height: 50px;"></li>
 				<li><a href="/index">Home</a></li>
 				<li><a href="/board/list">Board</a></li>
 				<li><a href="/photo/list">Gallery</a></li>
