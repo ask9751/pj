@@ -82,6 +82,10 @@
 		
 		
 	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate"></bean>
+	
+	
+	<!-- 네이버 로그인 BO Bean 설정 -->
+	<!-- <bean id="naverLoginBO" class="org.zerock.utils.NaverLoginBO"></bean> -->
 		
 
 

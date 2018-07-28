@@ -37,6 +37,7 @@ public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
 		List<ReviewVO> list = mservice.uRecom(mid);
 		
 		HttpSession session = request.getSession();
+		
 		session.setAttribute("favor", mservice.recommendMovie(favor));
 		session.setAttribute("list", list);
 

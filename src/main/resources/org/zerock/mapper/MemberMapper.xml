@@ -14,13 +14,12 @@
 	 values(#{mid},#{mpw},#{mname},#{email},#{favor})
 	 </insert>
 	  
-	 <update id="keepLogin">
+<!-- 	 <update id="keepLogin">
 	 update t_member set sessionkey = #{sessionId}, sessionlimit = #{next} where mid = #{mid}
-	 </update>
+	 </update> -->
 	 
-	 <select id="checkUserWithSessionKey" resultType="org.zerock.domain.MemberVO">
-	 select * from t_member where sessionKey = #{value} and sessionLimit > now()
-	 </select>
+
+
 	 
 	 <select id="idCheck" resultType="int">
 	 select count(*) from t_member where mid = #{id}

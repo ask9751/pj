@@ -55,6 +55,9 @@
 			    <beans:ref bean="ViewCountInterceptor"/>
 			</interceptor>
 		</interceptors>
+		
+		
+		<beans:bean id="naverLoginBO" class="org.zerock.utils.NaverLoginBO"></beans:bean>
 
 	<!-- <beans:bean id="LoginInterceptor" class="org.zerock.interceptor.LoginInterceptor"> 
 		</beans:bean> <beans:bean id="BoardInterceptor" class="org.zerock.interceptor.BoardInterceptor"></beans:bean> 

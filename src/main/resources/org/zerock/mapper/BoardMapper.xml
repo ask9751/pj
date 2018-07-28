@@ -72,7 +72,7 @@
 
 		select c.bno, c.title, c.mid, c.regdate, c.views, c.kname kno, t.gname gno  
 		from t_genre t right join 
-		(select b.bno,b.title, b.mid, b.regdate, b.views, k.kname, b.gno from t_board b 
+		(select b.bno,b.title,b.content, b.mid, b.regdate, b.views, k.kname, b.gno from t_board b 
 		left join t_kind k on b.kno = k.kno) c 
 		on t.gno = c.gno
 

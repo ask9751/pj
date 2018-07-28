@@ -131,9 +131,7 @@
    	  </div>
     </div>
 
-<div class="row">
-	<div class="col-sm-offset-5 col-sm-7"> <!-- style="float: none; margin: 0 auto;"> -->
-		<form class="form-inline" method="get">
+		<form class="form-inline text-center" method="get">
 			    <select name="type" id="type" class="form-control">
 				    <option value="">-----</option>
 				    <option value="w" ${pm.cri.type eq 'w'? "selected": '' }>작성자</option>
@@ -141,11 +139,9 @@
 			    </select>
 				<input class="form-control" type="text" id="keyword" name="keyword" value="${pm.cri.keyword}"/>
 	  
-			    <button id="serarchBtn" class="btn btn-defalut">검색</button>
+			    <button id="serarchBtn" class="btn btn-info">검색</button>
 	
 		</form>
-	</div>
-</div>
     
     
     <div class="row">
@@ -208,6 +204,9 @@
 	  crossorigin="anonymous"></script>
 <script>
 $(document).ready(function(){
+	
+	var prinName = '${pageContext.request.userPrincipal.name}';
+	var naverName = sessionStorage.getItem("naverName");
 	/* naver movie api */
 	$("#searchBtn").on("click",function(e){	
 		var _searchMoive = $("#searchMovie");
@@ -217,6 +216,7 @@ $(document).ready(function(){
 		if(keyword == "") {
 			alert("검색어를 입력하세요...");
 			_searchMoive.focus();
+			
 			return false;
 		}
 		_showMovie.html("");				
@@ -254,9 +254,13 @@ $(document).ready(function(){
 		var rating = parseFloat($("#rating").text());
 		var code = parseInt(_input.parent().find("input[name=code]").val());
 		var _comment = $("#comment").text();
-		var mid = '${pageContext.request.userPrincipal.name}';
-		
-		console.log(code);
+		var mid;
+		if(naverName != ""){
+			mid = naverName; 
+		}
+		if(prinName != ""){
+			mid = prinName;
+		}
 		$.ajax({
 		      type: "post",
 		      url : "/review",
@@ -271,7 +275,7 @@ $(document).ready(function(){
 		      data : JSON.stringify({
 		        mid : mid,
 		        title : title,
-		        comment : comment,
+		        comment : _comment,
 		        rating : rating,
 		        imgLink : imgLink,
 		        code : code

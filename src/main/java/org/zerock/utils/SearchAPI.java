@@ -64,6 +64,7 @@ public class SearchAPI {
 				result.setUserRating(object.get("userRating").toString());
 				result.setImgSrc(object.get("image").toString());
 				result.setUniqueCode(result.getLink().split("=")[1]);
+				System.out.println(result.getLink().split("=")[1]);
 
 				list.add(result);
 
