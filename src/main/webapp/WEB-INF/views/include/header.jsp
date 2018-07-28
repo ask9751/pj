@@ -134,8 +134,8 @@ body{
 </div>
 
 
-	<!-- Body 시작 -->
-	<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: white;">
+<!-- Body 시작 -->
+<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: white;">
 		<ul class="nav text-right" style="list-style: none; background-color: white;">
 		<c:choose>
 		  <c:when test="${pageContext.request.userPrincipal.name eq null && naver eq null}">

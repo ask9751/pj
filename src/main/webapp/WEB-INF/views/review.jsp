@@ -5,6 +5,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<style>
+img {
+width : 130px;
+height: 200px;
+}
+</style>
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="/resources/star.css" />
 
@@ -101,8 +107,9 @@
 	    	</tr>
 	    	<c:forEach var="list" items="${list}">
 	    	<tr>
+	    	  
 	    	  <td>${list.vno }</td>    	
-	    	  <td><img src="${list.imgLink }"></td>
+	    	  <td><input type="hidden" value="${list.code }"/><img src="${list.imgLink }"></td>
 	    	  <td>${list.rating }
 	    		<span class="star-input">	    		
 	    			<span class="input focus">
@@ -202,11 +209,49 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
   	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 	  crossorigin="anonymous"></script>
+<script src="/resources/bootstrap-3.3.2/js/tooltip.js"></script>
+<script src="/resources/bootstrap-3.3.2/js/popover.js"></script>
 <script>
 $(document).ready(function(){
-	
 	var prinName = '${pageContext.request.userPrincipal.name}';
 	var naverName = sessionStorage.getItem("naverName");
+	
+    $('img').popover({
+    	  html: true,
+    	  trigger: 'hover',
+    	  placement: 'right',
+    	  content: function() {    	
+ 		  	var code = $(this).closest("td").find("input").val();
+ 		  	var $img = $(this);
+ 		  		  	
+ 		  	$.ajax({
+ 		  		url: "recommend/"+code,
+ 		  		async: false,
+ 		  		dataType: "json",
+ 		  		success: function(result) {
+ 		  			console.log(result);
+ 		  			$(result).each(function(index){
+ 	 		  			$img.attr('title'+index,this.title);
+ 	 		  			$img.attr('link'+index,this.imgLink);
+ 	 		  		}); 		  			 		  			 			  	
+ 		  		}
+ 		  	}); 		  	 		
+	 		/* $.getJSON("/recommend/"+code, function(data){
+	 			$(data).each(function(index){
+ 		  			$img.attr('title'+index,this.title);
+ 		  			$img.attr('link'+index,this.imgLink);
+ 		  		});
+ 		  	}); */		 	
+ 		  	var foo =  		  		 		  		
+ 		  		"<img src='"+$img.attr('link0')+"' />" 		  		
+		  		+"<img src='"+$img.attr('link1')+"' />"
+		  		+"<img src='"+$img.attr('link2')+"' />"
+		  		+"<img src='"+$img.attr('link3')+"' />"
+		  		+"<img src='"+$img.attr('link4')+"' />"		  				  				  			 	 		  	
+ 		  	return foo;
+    	  }
+   	});
+		
 	/* naver movie api */
 	$("#searchBtn").on("click",function(e){	
 		var _searchMoive = $("#searchMovie");
@@ -246,6 +291,7 @@ $(document).ready(function(){
 		});	
 		$("#searchModal").modal();
 	});
+	
 	/* review submit */
 	$("#reviewBtn").on("click",function(e){
 		var _input = $("input[name=movie_info]:radio:checked").closest('div');

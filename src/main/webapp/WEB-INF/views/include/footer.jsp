@@ -1,7 +1,6 @@
   <!-- Footer start-->
   <link href="/resources/sticky-footer.css" rel="stylesheet">
   <!-- JS -->
-  
   <script src="/resources/bootstrap-3.3.2/docs/assets/js/ie-emulation-modes-warning.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
