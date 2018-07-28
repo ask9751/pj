@@ -65,14 +65,17 @@ public class RecommendSystem {
 
 		for (int i = 0; i < arr.size(); i++) {
 
-			List<RecommendedItem> recommendations = recommender.mostSimilarItems(arr.get(i), 5);
+			List<RecommendedItem> recommendations = recommender.mostSimilarItems(arr.get(i), 10);
 
 			if (recommendations.size() > 0) {
 				for (RecommendedItem recommendation : recommendations) {
 					IRecomVO vo = new IRecomVO();
 					vo.setTitle(arr.get(i));
-					vo.setRTitle(recommendation.getItemID());
-					vo.setValue(recommendation.getValue());
+					vo.setRtitle(recommendation.getItemID());
+					vo.setValue(Math.round(recommendation.getValue() * 1000) / 1000);
+						
+					
+					
 //					System.out.println("들어왔습니다........................................");
 //					System.out.println(arr.get(i));
 //					System.out.println(recommendation.getItemID());

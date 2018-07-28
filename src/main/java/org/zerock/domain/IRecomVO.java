@@ -7,7 +7,7 @@ public class IRecomVO {
 	
 	private int no;
 	private Long title;
-	private Long rTitle;
-	private Float value;
+	private Long rtitle;
+	private float value;
 	
 }

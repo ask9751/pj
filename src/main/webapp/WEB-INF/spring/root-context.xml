@@ -32,7 +32,7 @@
 
 		<!-- my localhost server -->
 		<!-- <property name="jdbcUrl"
-			 value="jdbc:log4jdbc:mysql://localhost:3306/pj"></property> 
+			 value="jdbc:log4jdbc:mysql://localhost:3306/pj01"></property> 
 			<property name="username" value="root"></property> 
 			<property name="password" value="1q2w3e4r"></property> 
 			<property name="minimumIdle" value="3"></property> -->
