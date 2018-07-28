@@ -9,13 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.zerock.domain.RecommendVO;
+import org.zerock.domain.ReviewVO;
 import org.zerock.mapper.MemberMapper;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
+@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml, file:src/main/webapp/WEB-INF/spring/security-context.xml")
 @Log4j
 public class MemberTests {
 
@@ -48,6 +49,12 @@ public class MemberTests {
 		
 		List<RecommendVO> list = mapper.selectMovie("�ڹ̵�");
 		
+		log.info(list);
+	}
+	
+	@Test
+	public void uRecomTest() {
+		List<ReviewVO> list = mapper.uRecom("user3");
 		log.info(list);
 	}
 

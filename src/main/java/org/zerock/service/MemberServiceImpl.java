@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.zerock.domain.LoginDTO;
 import org.zerock.domain.MemberVO;
 import org.zerock.domain.RecommendVO;
+import org.zerock.domain.ReviewVO;
 import org.zerock.mapper.MemberMapper;
 
 import lombok.Setter;
@@ -81,6 +82,14 @@ public class MemberServiceImpl implements MemberService {
 	
 		return mapper.getUserAuth(mid);
 	}
+
+
+	@Override
+	public List<ReviewVO> uRecom(String mid) {
+		
+		return mapper.uRecom(mid);
+	}
+	
 	
 	
 	

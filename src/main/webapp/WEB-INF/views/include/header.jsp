@@ -89,7 +89,18 @@ body{
 						<div>제작 국가 : ${Recommend.country}</div>
 					
 				</div>		
-				</c:forEach>	 	
+				</c:forEach>
+
+			</div>
+			<div class="col-sm-12">
+			<c:forEach items="${list}" var="Urecom">
+				<div class="col-sm-4 text-center">
+ 					<div class="recommend"><img class="thumbnail"src="${Urecom.imgLink}"></div>
+ 					
+						<div>${Urecom.title}</div>
+					
+				</div>		
+				</c:forEach>
 			</div>
           </div>
         </div>

@@ -16,7 +16,7 @@ public class IndexController {
 	@GetMapping("/index")
 	public void index(Model model) throws IOException {
 
-		//주간,월간,연간 인기영화 순위
+
 		model.addAttribute("week", service.weekList());
 		model.addAttribute("month", service.monthList());
 		model.addAttribute("year", service.yearList());

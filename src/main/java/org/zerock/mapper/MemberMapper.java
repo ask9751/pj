@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.zerock.domain.LoginDTO;
 import org.zerock.domain.MemberVO;
 import org.zerock.domain.RecommendVO;
+import org.zerock.domain.ReviewVO;
 
 public interface MemberMapper {
 
@@ -29,4 +30,6 @@ public interface MemberMapper {
 	public MemberVO getUserID(String mid);
 	
 	public String getUserAuth(String mid);
+	
+	public List<ReviewVO> uRecom(String mid);
 }

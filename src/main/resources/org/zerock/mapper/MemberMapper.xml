@@ -36,6 +36,15 @@
 	 order by rand() limit 0,3
 	 </select>
 	 
+	 <!-- 유저기반 추천시스템 -->
+	 <select id="uRecom" resultType="org.zerock.domain.ReviewVO" parameterType="org.zerock.domain.MemberVO">
+select a.mid, a.title, a.imgLink from (
+   select distinct u.mid, u.title, r.imgLink, u.value from t_urecom as u join
+   t_review as r on u.title=r.title
+   )
+as a where a.mid = #{id} order by value desc limit 0,3 
+	 </select>
+	 
 	 <!-- t_auth tables -->
 	 <insert id="insertAuth">
 	 insert into t_auth (mid) values (#{mid})
