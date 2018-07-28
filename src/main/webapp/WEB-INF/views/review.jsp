@@ -9,9 +9,7 @@
 img {
 width : 130px;
 height: 200px;
-
 }
-
 </style>
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="/resources/star.css" />
@@ -140,9 +138,7 @@ height: 200px;
    	  </div>
     </div>
 
-<div class="row">
-	<div class="col-sm-offset-5 col-sm-7"> <!-- style="float: none; margin: 0 auto;"> -->
-		<form class="form-inline" method="get">
+		<form class="form-inline text-center" method="get">
 			    <select name="type" id="type" class="form-control">
 				    <option value="">-----</option>
 				    <option value="w" ${pm.cri.type eq 'w'? "selected": '' }>작성자</option>
@@ -150,11 +146,9 @@ height: 200px;
 			    </select>
 				<input class="form-control" type="text" id="keyword" name="keyword" value="${pm.cri.keyword}"/>
 	  
-			    <button id="serarchBtn" class="btn btn-defalut">검색</button>
+			    <button id="serarchBtn" class="btn btn-info">검색</button>
 	
 		</form>
-	</div>
-</div>
     
     
     <div class="row">
@@ -219,6 +213,8 @@ height: 200px;
 <script src="/resources/bootstrap-3.3.2/js/popover.js"></script>
 <script>
 $(document).ready(function(){
+	var prinName = '${pageContext.request.userPrincipal.name}';
+	var naverName = sessionStorage.getItem("naverName");
 	
     $('img').popover({
     	  html: true,
@@ -227,8 +223,7 @@ $(document).ready(function(){
     	  content: function() {    	
  		  	var code = $(this).closest("td").find("input").val();
  		  	var $img = $(this);
- 		  	
- 		  	
+ 		  		  	
  		  	$.ajax({
  		  		url: "recommend/"+code,
  		  		async: false,
@@ -240,29 +235,23 @@ $(document).ready(function(){
  	 		  			$img.attr('link'+index,this.imgLink);
  	 		  		}); 		  			 		  			 			  	
  		  		}
- 		  	});
- 		  	 		
+ 		  	}); 		  	 		
 	 		/* $.getJSON("/recommend/"+code, function(data){
 	 			$(data).each(function(index){
  		  			$img.attr('title'+index,this.title);
  		  			$img.attr('link'+index,this.imgLink);
  		  		});
- 		  	}); */
-		 	
- 		  	var foo = 
- 		  		 		  		
+ 		  	}); */		 	
+ 		  	var foo =  		  		 		  		
  		  		"<img src='"+$img.attr('link0')+"' />" 		  		
 		  		+"<img src='"+$img.attr('link1')+"' />"
 		  		+"<img src='"+$img.attr('link2')+"' />"
 		  		+"<img src='"+$img.attr('link3')+"' />"
-		  		+"<img src='"+$img.attr('link4')+"' />"		  				  				  	
-		 	
- 		  	
+		  		+"<img src='"+$img.attr('link4')+"' />"		  				  				  			 	 		  	
  		  	return foo;
     	  }
    	});
-	
-	
+		
 	/* naver movie api */
 	$("#searchBtn").on("click",function(e){	
 		var _searchMoive = $("#searchMovie");
@@ -272,6 +261,7 @@ $(document).ready(function(){
 		if(keyword == "") {
 			alert("검색어를 입력하세요...");
 			_searchMoive.focus();
+			
 			return false;
 		}
 		_showMovie.html("");				
@@ -310,9 +300,13 @@ $(document).ready(function(){
 		var rating = parseFloat($("#rating").text());
 		var code = parseInt(_input.parent().find("input[name=code]").val());
 		var _comment = $("#comment").text();
-		var mid = '${pageContext.request.userPrincipal.name}';
-		
-		console.log(code);
+		var mid;
+		if(naverName != ""){
+			mid = naverName; 
+		}
+		if(prinName != ""){
+			mid = prinName;
+		}
 		$.ajax({
 		      type: "post",
 		      url : "/review",
@@ -327,7 +321,7 @@ $(document).ready(function(){
 		      data : JSON.stringify({
 		        mid : mid,
 		        title : title,
-		        comment : comment,
+		        comment : _comment,
 		        rating : rating,
 		        imgLink : imgLink,
 		        code : code
@@ -363,7 +357,6 @@ $(document).ready(function(){
 			 });		
 		}	
 	});
-	
 	
 });
 </script>

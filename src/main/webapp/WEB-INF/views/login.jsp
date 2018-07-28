@@ -88,16 +88,13 @@ margin-top: 5px;
 							
 						
 					</div>
-					
-					<div class="container-login100-form-btn m-t-20">
-					
-					  <img src="/resources/icon/twitter.png">&nbsp;&nbsp;
-					  <img src="/resources/icon/facebook.png">&nbsp;&nbsp;
-					  <img src="/resources/icon/google.png">&nbsp;&nbsp;
-					  <img src="/resources/icon/kakao.jpg">&nbsp;&nbsp;
-					  <img src="/resources/icon/naver.png">
-					  
+					<div class="text-center" style="margin-top: 10px;">
+						<a href="${url}">
+							<img src="resources/img/naverLogin1.PNG" style="width: 280px; height: 57px;"/>
+						</a>
 					</div>
+
+
 
 						<c:if test="${not empty error}">
 							<div class="error">${error}</div>
