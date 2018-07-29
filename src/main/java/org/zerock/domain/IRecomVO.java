@@ -8,6 +8,6 @@ public class IRecomVO {
 	private int no;
 	private Long title;
 	private Long rtitle;
-	private float value;
+	private Float value;
 	
 }

@@ -109,7 +109,7 @@ height: 200px;
 	    	<tr>
 	    	  
 	    	  <td>${list.vno }</td>    	
-	    	  <td><input type="hidden" value="${list.code }"/><img src="${list.imgLink }"></td>
+	    	  <td><input type="hidden" value="${list.code }"/><img src="${list.link }"></td>
 	    	  <td>${list.rating }
 	    		<span class="star-input">	    		
 	    			<span class="input focus">
@@ -232,7 +232,7 @@ $(document).ready(function(){
  		  			console.log(result);
  		  			$(result).each(function(index){
  	 		  			$img.attr('title'+index,this.title);
- 	 		  			$img.attr('link'+index,this.imgLink);
+ 	 		  			$img.attr('link'+index,this.link);
  	 		  		}); 		  			 		  			 			  	
  		  		}
  		  	}); 		  	 		

@@ -17,8 +17,8 @@
   </delete>
   
   <select id="listIRecom" resultType="java.util.HashMap" parameterType="int">
-	select title, imgLink from t_review a inner join (
-		select rtitle from t_irecom where title = #{code} ) b on a.code = b.rtitle group by title ,imgLink
+	select title, link from t_review a inner join (
+		select rtitle from t_irecom where no > 0 and title = #{code} ) b on a.code = b.rtitle where vno > 0 group by title ,link
   </select>
   
   </mapper>

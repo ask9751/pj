@@ -10,18 +10,18 @@ import com.zaxxer.hikari.HikariDataSource;
 @Service
 public class RecommendScheduler {
 	
-	@Autowired
-	RecommendMapper rmapper;
-
-	@Autowired
-	HikariDataSource ds;
-	
-	@Scheduled(cron = "0 25 * * * *")
-	public void startRe()throws Exception {
-		
-		rmapper.removeRecom();
-		
-		rmapper.addRecommend(RecommendSystem.startRecommend(ds));
-	}
+//	@Autowired
+//	RecommendMapper rmapper;
+//
+//	@Autowired
+//	HikariDataSource ds;
+//	
+//	@Scheduled(cron = "0 47 * * * *")
+//	public void startRe()throws Exception {
+//		
+//		rmapper.removeRecom();
+//		
+//		rmapper.addRecommend(RecommendSystem.startRecommend(ds));
+//	}
 
 }
