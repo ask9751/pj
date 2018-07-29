@@ -27,7 +27,7 @@ public class RecommendRESTController {
 		listIRecom(@PathVariable("code") int code) {
 		log.info(code);
 		log.info("........................................................");
-		log.info(mapper.listIRecom(code));
+		
 		ResponseEntity<List<Map<String,String>>> entity = null;		
 		try {
 			
@@ -35,7 +35,7 @@ public class RecommendRESTController {
 			
 			list = mapper.listIRecom(code);
 			
-									
+			System.out.println("list :" +list.toString());
 			entity = new ResponseEntity<List<Map<String,String>>>(list, HttpStatus.OK);
 			
 		} catch (Exception e) {

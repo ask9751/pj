@@ -9,24 +9,25 @@
 		<selectKey order="BEFORE" keyProperty="mno" resultType="int">
 			select mno from t_member where mid = #{mid}
 		</selectKey>
-		insert into t_review (mid, title, code, comment, rating, imgLink, mno)
-		values (#{mid}, #{title}, #{code}, #{comment}, #{rating}, #{imgLink}, #{mno})
+		insert into t_review (mid, title, code, comment, rating, link, mno)
+		values (#{mid}, #{title}, #{code}, #{comment}, #{rating}, #{link}, #{mno})
 	</insert>
 	
 	
 	<!-- 검색 Criteria -->
 	<sql id="criteria">
-		<if test="type !='' and keyword !=''">
-			<where>
+	<where>
+			vno > 0
+			<if test="type !='' and keyword !=''">			
 					<if test="type eq 'w'.toString()">
-						mid like concat ('%',#{keyword},'%' )
+						and mid like concat ('%',#{keyword},'%' )
 					</if>
 
 					<if test="type eq 't'.toString()">
-						title like concat ('%',#{keyword},'%')
-					</if>
-			</where>
-		</if>
+						and title like concat ('%',#{keyword},'%')
+					</if>			
+			</if>
+		</where>
 	</sql>
 	
 	<!-- 리뷰 리스트 -->
@@ -35,7 +36,7 @@
 	
 	<include refid="criteria"></include>
 	
-	where vno > 0 order by vno desc limit #{pageStart},#{perPageNum}
+	order by vno desc limit #{pageStart},#{perPageNum}
 	</select>  
 	
 	<!-- 리뷰 삭제 -->

@@ -17,8 +17,17 @@
   </delete>
   
   <select id="listIRecom" resultType="java.util.HashMap" parameterType="int">
-	select title, link from t_review a inner join (
-		select rtitle from t_irecom where no > 0 and title = #{code} ) b on a.code = b.rtitle where vno > 0 group by title ,link
+	<!-- select title, link from t_review a inner join (
+	
+		select rtitle from t_irecom where no > 0 and title = #{code} ) 
+		
+		b on a.code = b.rtitle where vno > 0 group by title ,link -->
+		
+		select title, link from t_review  a inner join (
+        
+        select rtitle from t_irecom where no > 0 and title = #{code}
+        
+        ) b on a.code = b.rtitle group by title, link;
   </select>
   
   </mapper>

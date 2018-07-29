@@ -9,6 +9,14 @@
 img {
 width : 130px;
 height: 200px;
+margin-right:20px;
+
+}
+.popover-content {
+	width: 780px;
+}
+.popover {
+	max-width: 1000px;
 }
 </style>
 <!-- CSS -->
@@ -218,18 +226,20 @@ $(document).ready(function(){
 	
     $('img').popover({
     	  html: true,
-    	  trigger: 'hover',
+    	  trigger: 'click',
     	  placement: 'right',
     	  content: function() {    	
  		  	var code = $(this).closest("td").find("input").val();
  		  	var $img = $(this);
- 		  		  	
+ 		  	console.log("code:",code);
+ 		  	
  		  	$.ajax({
  		  		url: "recommend/"+code,
+ 		  		type: "get",
  		  		async: false,
  		  		dataType: "json",
  		  		success: function(result) {
- 		  			console.log(result);
+ 		  			console.log("result :",result);
  		  			$(result).each(function(index){
  	 		  			$img.attr('title'+index,this.title);
  	 		  			$img.attr('link'+index,this.link);
@@ -242,7 +252,8 @@ $(document).ready(function(){
  		  			$img.attr('link'+index,this.imgLink);
  		  		});
  		  	}); */		 	
- 		  	var foo =  		  		 		  		
+ 		  	var foo =
+ 		  		
  		  		"<img src='"+$img.attr('link0')+"' />" 		  		
 		  		+"<img src='"+$img.attr('link1')+"' />"
 		  		+"<img src='"+$img.attr('link2')+"' />"
@@ -323,7 +334,7 @@ $(document).ready(function(){
 		        title : title,
 		        comment : _comment,
 		        rating : rating,
-		        imgLink : imgLink,
+		        link : imgLink,
 		        code : code
 		      }),
 		      success : function(result) {		
