@@ -106,7 +106,7 @@ body{
 			<div class="col-sm-12">
 			<c:forEach items="${list}" var="Urecom">
 				<div class="col-sm-4 text-center">
- 					<div class="recommend"><img class="thumbnail"src="${Urecom.imgLink}"></div>
+ 					<div class="recommend"><img class="thumbnail"src="${Urecom.link}"></div>
  					
 						<div>${Urecom.title}</div>
 					
@@ -173,7 +173,7 @@ body{
 		
 			<ul class="nav navbar-nav" style="font-size: 18px;">
 			
-			<li class="pull-left"><img src="resources/img/leaf.png" style="width: 50px; height: 50px;"></li>
+			<li class="pull-left"><img src="/resources/img/leaf.png" style="width: 50px; height: 50px;"></li>
 				<li><a href="/index">Home</a></li>
 				<li><a href="/board/list">Board</a></li>
 				<li><a href="/photo/list">Gallery</a></li>

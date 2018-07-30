@@ -116,7 +116,7 @@ $(document).ready(function() {
 			}
 		});
 	});
-	/* 파일업로드 */
+	
 	
 	/* 파일타입 체크 */
 	function checkImageType(fileName) {
@@ -124,7 +124,6 @@ $(document).ready(function() {
 		return fileName.match(pattern);
 	}
 	/* 파일타입 체크 */
-	
 	$("#addBtn").on("click", function(e){
 		if($("input[name=images]").length == 0) {
 			e.preventDefault();

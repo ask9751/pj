@@ -14,11 +14,9 @@
 	</select>
 	
 	<select id="joinList" resultType="org.zerock.domain.PhotoVO">
-		select a.pno, a.title, a.regdate, a.mid, ifnull(b.fullname,0) image
-		from t_photo a left join t_image b
-		on a.pno = b.pno 
-		group by pno
-		order by pno desc 
+		select a.pno, a.mid, a.title, max(t.fullname) as image 
+		from (select * from t_photo) as a left join t_image as t on a.pno = t.pno  
+		group by a.title, a.pno order by a.pno desc
 		limit #{pageStart},#{perPageNum}
 	</select>
 

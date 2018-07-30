@@ -37,11 +37,11 @@
 	 
 	 <!-- 유저기반 추천시스템 -->
 	 <select id="uRecom" resultType="org.zerock.domain.ReviewVO" parameterType="org.zerock.domain.MemberVO">
-select a.mid, a.title, a.imgLink from (
-   select distinct u.mid, u.title, r.imgLink, u.value from t_urecom as u join
-   t_review as r on u.title=r.title
-   )
-as a where a.mid = #{id} order by value desc limit 0,3 
+		select b.title, a.link from t_review  a inner join (
+        
+        select title from t_urecom where no > 0 and mid = #{mid}
+        
+        ) b on b.title = a.title where vno > 0 group by a.title, a.link limit 0, 5;
 	 </select>
 	 
 	 <!-- t_auth tables -->
