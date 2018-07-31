@@ -18,6 +18,15 @@ margin-right:20px;
 .popover {
 	max-width: 1000px;
 }
+.recom-title{
+	text-align: center;
+	font-size: 20px;
+	margin-bottom: 6px;
+}
+
+.target {
+	color: red;	
+}
 </style>
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="/resources/star.css" />
@@ -253,12 +262,12 @@ $(document).ready(function(){
  		  		});
  		  	}); */		 	
  		  	var foo =
- 		  		
- 		  		"<img src='"+$img.attr('link0')+"' />" 		  		
+ 		  		"<div class='recom-title text-info'>다른 <span class='target'>사용자</span>가 함께 본 영화</div>"
+ 		  		+"<img src='"+$img.attr('link0')+"' />" 		  		
 		  		+"<img src='"+$img.attr('link1')+"' />"
 		  		+"<img src='"+$img.attr('link2')+"' />"
 		  		+"<img src='"+$img.attr('link3')+"' />"
-		  		+"<img src='"+$img.attr('link4')+"' />"		  				  				  			 	 		  	
+		  		+"<img src='"+$img.attr('link4')+"' />" 				  				  			 	 		  	
  		  	return foo;
     	  }
    	});

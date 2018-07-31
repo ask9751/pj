@@ -4,23 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>네이버 아이디로 로그인하셨습니당</title>
+<title>네이버 아이디로 로그인하셨습니다</title>
 </head>
 <body>
-	<div
-		style="background-color: #15a181; width: 100%; height: 50px; text-align: center; color: white;">
-		<h3>네이버 ID로 로그인하셨습니다</h3>
-	</div>
-	<br>
+
 	<h2 style="text-align: center" id="name"></h2>
 	<h4 style="text-align: center" id="email"></h4>
-
-
-
-
-
+	
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-
 <script type="text/javascript">
 	$(document).ready(function() {
 		var name = ${result}.response.name;
@@ -28,15 +19,12 @@
 		var url = "${prevPage}";
 		console.log(url);
 		$("#name").html("환영합니다. "+name+"님");
-		$("#email").html("님 E-mail 주소가는" + email + " 입니다. ㅇㅈ?");
+		$("#email").html("E-mail 주소 : " + email);
 		
 		sessionStorage.setItem("naverName",${result}.response.name);
 		
-		setTimeout("location.href = '" +url +"'", 2000);
+		setTimeout("location.href = '" +url +"'", 1000);
 	  });
 </script>
-
-
-
 </body>
 </html>
